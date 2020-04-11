@@ -1,0 +1,5 @@
+nohup: ignoring input
+Traceback (most recent call last):
+  File "utts_slicing.py", line 1, in <module>
+    import gentle
+ModuleNotFoundError: No module named 'gentle'

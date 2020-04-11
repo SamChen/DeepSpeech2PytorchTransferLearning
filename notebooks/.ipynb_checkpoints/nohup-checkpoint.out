@@ -1,0 +1,326 @@
+[INFO 2019-12-24 20:49:00,358 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2019-12-24 20:49:09,377 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2019-12-24 20:49:09,468 model.py:301] end initializing scorer
+[INFO 2019-12-24 20:49:09,479 model.py:153] Start training process
+[INFO 2019-12-24 20:51:00,043 model.py:167] global_iter: 0, loss/train: 1.3257577419281006, loss/val: 1.5669080018997192
+[INFO 2019-12-24 22:09:22,608 model.py:167] global_iter: 400, loss/train: 1.144586443901062, loss/val: 1.4858016913587397
+[INFO 2019-12-24 23:27:27,506 model.py:167] global_iter: 800, loss/train: 1.0991265773773193, loss/val: 1.480472813953053
+[INFO 2019-12-25 00:45:39,507 model.py:167] global_iter: 1200, loss/train: 1.2282896041870117, loss/val: 1.4270847241083782
+[INFO 2019-12-25 02:03:28,471 model.py:167] global_iter: 1600, loss/train: 1.1175963878631592, loss/val: 1.3618838877388926
+[INFO 2019-12-25 03:22:22,769 model.py:167] global_iter: 2000, loss/train: 1.123185157775879, loss/val: 1.3485566233143662
+[INFO 2019-12-25 04:40:29,388 model.py:167] global_iter: 2400, loss/train: 1.1622581481933594, loss/val: 1.319663284402905
+[INFO 2019-12-25 05:58:23,717 model.py:167] global_iter: 2800, loss/train: 0.8863281011581421, loss/val: 1.2983634760885527
+[INFO 2019-12-25 07:16:58,196 model.py:167] global_iter: 3200, loss/train: 0.8253563642501831, loss/val: 1.274985047903928
+[INFO 2019-12-25 08:34:17,542 model.py:167] global_iter: 3600, loss/train: 0.9721744656562805, loss/val: 1.2571122953386018
+[INFO 2019-12-25 09:51:07,912 model.py:167] global_iter: 4000, loss/train: 0.7320284843444824, loss/val: 1.223402976989746
+[INFO 2019-12-25 11:08:45,399 model.py:167] global_iter: 4400, loss/train: 1.2206718921661377, loss/val: 1.2268424973343357
+[INFO 2019-12-25 12:27:12,767 model.py:167] global_iter: 4800, loss/train: 0.821076512336731, loss/val: 1.21226797320626
+[INFO 2019-12-25 13:45:47,038 model.py:167] global_iter: 5200, loss/train: 1.0760341882705688, loss/val: 1.18725995945208
+[INFO 2019-12-25 15:04:19,315 model.py:167] global_iter: 5600, loss/train: 1.0029010772705078, loss/val: 1.1866488908276414
+[INFO 2019-12-25 16:22:26,191 model.py:167] global_iter: 6000, loss/train: 1.2841763496398926, loss/val: 1.1738700559644988
+[INFO 2019-12-25 17:40:37,357 model.py:167] global_iter: 6400, loss/train: 0.9803265333175659, loss/val: 1.1644953128063318
+[INFO 2019-12-25 18:58:39,164 model.py:167] global_iter: 6800, loss/train: 0.6876496076583862, loss/val: 1.166445356426817
+[INFO 2019-12-25 20:17:27,928 model.py:167] global_iter: 7200, loss/train: 1.016710638999939, loss/val: 1.1578191843899814
+[INFO 2019-12-25 21:35:34,605 model.py:167] global_iter: 7600, loss/train: 0.9256183505058289, loss/val: 1.1432015877781492
+[INFO 2019-12-25 22:52:39,411 model.py:167] global_iter: 8000, loss/train: 0.9309759736061096, loss/val: 1.1243641990603823
+[INFO 2019-12-26 00:10:51,060 model.py:167] global_iter: 8400, loss/train: 0.8177914023399353, loss/val: 1.1225619081294897
+[INFO 2019-12-26 00:50:29,690 model.py:175] global_iter: 8600, loss/train: 0.600861132144928, loss/val: 1.125912095561172
+[INFO 2019-12-26 00:52:31,762 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2019-12-26 00:52:41,185 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2019-12-26 00:52:41,186 model.py:301] end initializing scorer
+[INFO 2019-12-26 00:52:41,197 model.py:153] Start training process
+[INFO 2019-12-26 00:54:39,715 model.py:167] global_iter: 0, loss/train: 1.1599050760269165, loss/val: 1.5899584473985615
+[INFO 2019-12-26 02:12:20,890 model.py:167] global_iter: 400, loss/train: 0.9261348247528076, loss/val: 1.5232190146590725
+[INFO 2019-12-26 03:30:42,934 model.py:167] global_iter: 800, loss/train: 1.654534935951233, loss/val: 1.488406569668741
+[INFO 2019-12-26 04:49:09,558 model.py:167] global_iter: 1200, loss/train: 1.122075080871582, loss/val: 1.4253237464211204
+[INFO 2019-12-26 06:07:37,712 model.py:167] global_iter: 1600, loss/train: 1.4428789615631104, loss/val: 1.4089499495246194
+[INFO 2019-12-26 07:25:11,240 model.py:167] global_iter: 2000, loss/train: 0.8330094814300537, loss/val: 1.3785571148901274
+[INFO 2019-12-26 08:44:08,881 model.py:167] global_iter: 2400, loss/train: 1.4865367412567139, loss/val: 1.3422171870867412
+[INFO 2019-12-26 10:02:23,455 model.py:167] global_iter: 2800, loss/train: 1.2110637426376343, loss/val: 1.304752028349674
+[INFO 2019-12-26 11:20:27,602 model.py:167] global_iter: 3200, loss/train: 0.9232379198074341, loss/val: 1.2928762074672815
+[INFO 2019-12-26 12:39:05,506 model.py:167] global_iter: 3600, loss/train: 1.1041696071624756, loss/val: 1.2826906243960063
+[INFO 2019-12-26 13:57:03,005 model.py:167] global_iter: 4000, loss/train: 1.6105177402496338, loss/val: 1.2613955013679736
+[INFO 2019-12-26 15:15:07,388 model.py:167] global_iter: 4400, loss/train: 0.907624363899231, loss/val: 1.250067893302802
+[INFO 2019-12-26 16:34:23,241 model.py:167] global_iter: 4800, loss/train: 1.1222950220108032, loss/val: 1.2361365791523096
+[INFO 2019-12-26 17:53:01,986 model.py:167] global_iter: 5200, loss/train: 1.018615961074829, loss/val: 1.2110138987049912
+[INFO 2019-12-26 19:10:56,311 model.py:167] global_iter: 5600, loss/train: 1.0861265659332275, loss/val: 1.2353420347878428
+[INFO 2019-12-26 20:29:16,585 model.py:167] global_iter: 6000, loss/train: 0.8812966346740723, loss/val: 1.2033305095903801
+[INFO 2019-12-26 21:47:23,291 model.py:167] global_iter: 6400, loss/train: 1.0746824741363525, loss/val: 1.1733505418806365
+[INFO 2019-12-26 23:06:44,896 model.py:167] global_iter: 6800, loss/train: 0.9435527324676514, loss/val: 1.1549241109327837
+[INFO 2019-12-27 00:25:30,168 model.py:167] global_iter: 7200, loss/train: 1.1371779441833496, loss/val: 1.1520904916705508
+[INFO 2019-12-27 01:43:25,566 model.py:167] global_iter: 7600, loss/train: 0.9329534769058228, loss/val: 1.1633105892123599
+[INFO 2019-12-27 03:02:09,999 model.py:167] global_iter: 8000, loss/train: 0.8248494863510132, loss/val: 1.154699565786304
+[INFO 2019-12-27 04:20:18,253 model.py:167] global_iter: 8400, loss/train: 1.2021405696868896, loss/val: 1.1421361981016216
+[INFO 2019-12-27 04:59:47,199 model.py:175] global_iter: 8600, loss/train: 1.0538582801818848, loss/val: 1.1400228594288682
+[INFO 2019-12-27 05:01:47,087 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2019-12-27 05:01:56,955 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2019-12-27 05:01:57,280 model.py:301] end initializing scorer
+[INFO 2019-12-27 05:01:57,290 model.py:153] Start training process
+[INFO 2019-12-27 05:03:53,406 model.py:167] global_iter: 0, loss/train: 1.3087184429168701, loss/val: 1.5853184353221546
+[INFO 2019-12-27 06:23:14,837 model.py:167] global_iter: 400, loss/train: 1.3045035600662231, loss/val: 1.5649305112434155
+[INFO 2019-12-27 07:41:07,194 model.py:167] global_iter: 800, loss/train: 4.451797008514404, loss/val: 1.5028022744438865
+[INFO 2019-12-27 09:00:06,283 model.py:167] global_iter: 1200, loss/train: 1.435937523841858, loss/val: 1.5115493644367566
+[INFO 2019-12-27 10:18:30,487 model.py:167] global_iter: 1600, loss/train: 1.5754542350769043, loss/val: 1.461848497390747
+[INFO 2019-12-27 11:37:33,387 model.py:167] global_iter: 2000, loss/train: 1.1030035018920898, loss/val: 1.4401958548661433
+[INFO 2019-12-27 12:56:32,085 model.py:167] global_iter: 2400, loss/train: 1.1921486854553223, loss/val: 1.38342993367802
+[INFO 2019-12-27 14:14:29,895 model.py:167] global_iter: 2800, loss/train: 1.3498769998550415, loss/val: 1.3552975672664065
+[INFO 2019-12-27 15:33:35,432 model.py:167] global_iter: 3200, loss/train: 1.0888903141021729, loss/val: 1.3454317757577607
+[INFO 2019-12-27 16:52:12,816 model.py:167] global_iter: 3600, loss/train: 0.9176814556121826, loss/val: 1.3435581958655156
+[INFO 2019-12-27 18:10:47,060 model.py:167] global_iter: 4000, loss/train: 1.1668120622634888, loss/val: 1.3044749462243281
+[INFO 2019-12-27 19:28:31,661 model.py:167] global_iter: 4400, loss/train: 0.8961303234100342, loss/val: 1.2832486647548098
+[INFO 2019-12-27 20:46:36,285 model.py:167] global_iter: 4800, loss/train: 0.6092188954353333, loss/val: 1.2736101746559143
+[INFO 2019-12-27 22:05:31,196 model.py:167] global_iter: 5200, loss/train: 1.5758042335510254, loss/val: 1.250880246812647
+[INFO 2019-12-27 23:23:51,649 model.py:167] global_iter: 5600, loss/train: 1.034653902053833, loss/val: 1.2293353965788176
+[INFO 2019-12-28 00:42:51,798 model.py:167] global_iter: 6000, loss/train: 1.111751675605774, loss/val: 1.209913103869467
+[INFO 2019-12-28 02:01:08,568 model.py:167] global_iter: 6400, loss/train: 1.2964348793029785, loss/val: 1.2181032119375286
+[INFO 2019-12-28 03:19:11,921 model.py:167] global_iter: 6800, loss/train: 1.3198776245117188, loss/val: 1.2134269241130713
+[INFO 2019-12-28 04:37:54,698 model.py:167] global_iter: 7200, loss/train: 1.1288135051727295, loss/val: 1.1807022040540522
+[INFO 2019-12-28 05:56:56,085 model.py:167] global_iter: 7600, loss/train: 0.9213643074035645, loss/val: 1.1811346556201126
+[INFO 2019-12-28 07:15:48,047 model.py:167] global_iter: 8000, loss/train: 1.174980878829956, loss/val: 1.1642315586407979
+[INFO 2019-12-28 08:34:03,282 model.py:167] global_iter: 8400, loss/train: 0.9252601265907288, loss/val: 1.1733410141684792
+[INFO 2019-12-28 09:14:08,323 model.py:175] global_iter: 8600, loss/train: 1.089583396911621, loss/val: 1.1588934912826077
+[INFO 2019-12-28 09:16:10,363 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2019-12-28 09:16:21,354 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2019-12-28 09:16:21,758 model.py:301] end initializing scorer
+[INFO 2019-12-28 09:16:21,766 model.py:153] Start training process
+[INFO 2019-12-28 09:18:22,470 model.py:167] global_iter: 0, loss/train: 1.3249986171722412, loss/val: 1.6211260376554546
+[INFO 2019-12-28 10:37:15,689 model.py:167] global_iter: 400, loss/train: 1.0776909589767456, loss/val: 1.3231149153275923
+[INFO 2019-12-28 11:56:12,161 model.py:167] global_iter: 800, loss/train: 1.2754606008529663, loss/val: 1.2235121004509204
+[INFO 2019-12-28 13:15:21,428 model.py:167] global_iter: 1200, loss/train: 1.0286916494369507, loss/val: 1.205517539472291
+[INFO 2019-12-28 14:33:16,680 model.py:167] global_iter: 1600, loss/train: 0.69504714012146, loss/val: 1.1513697649493362
+[INFO 2019-12-28 15:51:16,969 model.py:167] global_iter: 2000, loss/train: 1.1914654970169067, loss/val: 1.1137559287475818
+[INFO 2019-12-28 17:10:10,001 model.py:167] global_iter: 2400, loss/train: 0.8588356971740723, loss/val: 1.0906994938850403
+[INFO 2019-12-28 18:28:52,488 model.py:167] global_iter: 2800, loss/train: 0.7047759294509888, loss/val: 1.0721437154394207
+[INFO 2019-12-28 19:47:40,956 model.py:167] global_iter: 3200, loss/train: 0.8357009887695312, loss/val: 1.0461816769657712
+[INFO 2019-12-28 21:06:08,966 model.py:167] global_iter: 3600, loss/train: 0.7078224420547485, loss/val: 1.0392672455672063
+[INFO 2019-12-28 22:24:19,360 model.py:167] global_iter: 4000, loss/train: 0.5218431949615479, loss/val: 1.0247170690334204
+[INFO 2019-12-28 23:43:22,547 model.py:167] global_iter: 4400, loss/train: 0.6066771149635315, loss/val: 1.0284300554882397
+[INFO 2019-12-29 01:01:03,809 model.py:167] global_iter: 4800, loss/train: 0.6111119985580444, loss/val: 1.0023519974766355
+[INFO 2019-12-29 02:18:52,821 model.py:167] global_iter: 5200, loss/train: 0.7488915920257568, loss/val: 1.0092060800754663
+[INFO 2019-12-29 03:38:14,336 model.py:167] global_iter: 5600, loss/train: 0.6349858045578003, loss/val: 1.0023760596911113
+[INFO 2019-12-29 04:56:15,883 model.py:167] global_iter: 6000, loss/train: 0.7144304513931274, loss/val: 0.9995934493613966
+[INFO 2019-12-29 06:14:43,062 model.py:167] global_iter: 6400, loss/train: 0.8039047718048096, loss/val: 0.9888083826411854
+[INFO 2019-12-29 07:33:57,448 model.py:167] global_iter: 6800, loss/train: 0.5420092344284058, loss/val: 0.991175758116173
+[INFO 2019-12-29 08:52:31,501 model.py:167] global_iter: 7200, loss/train: 0.958358883857727, loss/val: 0.970982967001019
+[INFO 2019-12-29 10:11:16,709 model.py:167] global_iter: 7600, loss/train: 0.4766417145729065, loss/val: 0.9992094003792965
+[INFO 2019-12-29 11:30:01,469 model.py:167] global_iter: 8000, loss/train: 0.4815160036087036, loss/val: 0.9749718182014696
+[INFO 2019-12-29 12:48:23,926 model.py:167] global_iter: 8400, loss/train: 0.5794158577919006, loss/val: 0.9735757762735541
+[INFO 2019-12-29 13:28:28,978 model.py:175] global_iter: 8600, loss/train: 0.5218963623046875, loss/val: 0.9751695195833842
+[INFO 2019-12-29 13:30:37,710 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2019-12-29 13:30:49,388 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2019-12-29 13:30:49,846 model.py:301] end initializing scorer
+[INFO 2019-12-29 13:30:49,860 model.py:153] Start training process
+[INFO 2019-12-29 13:32:47,380 model.py:167] global_iter: 0, loss/train: 0.8054785132408142, loss/val: 1.588262308727611
+[INFO 2019-12-29 14:51:07,543 model.py:167] global_iter: 400, loss/train: 1.0475431680679321, loss/val: 1.366581055251035
+[INFO 2019-12-29 16:10:04,969 model.py:167] global_iter: 800, loss/train: 1.130456805229187, loss/val: 1.2342038895144607
+[INFO 2019-12-29 17:29:51,779 model.py:167] global_iter: 1200, loss/train: 1.1556733846664429, loss/val: 1.1868109450195774
+[INFO 2019-12-29 18:47:41,085 model.py:167] global_iter: 1600, loss/train: 0.9163220524787903, loss/val: 1.1570853067166877
+[INFO 2019-12-29 20:06:17,080 model.py:167] global_iter: 2000, loss/train: 0.7709408402442932, loss/val: 1.1023663426890518
+[INFO 2019-12-29 21:25:24,893 model.py:167] global_iter: 2400, loss/train: 0.7939229607582092, loss/val: 1.1032759854287812
+[INFO 2019-12-29 22:44:43,192 model.py:167] global_iter: 2800, loss/train: 0.6691231727600098, loss/val: 1.090493138992425
+[INFO 2019-12-30 00:02:44,664 model.py:167] global_iter: 3200, loss/train: 0.9530724287033081, loss/val: 1.0867370258678088
+[INFO 2019-12-30 01:21:06,296 model.py:167] global_iter: 3600, loss/train: 0.6851426959037781, loss/val: 1.0632154237140308
+[INFO 2019-12-30 02:40:11,228 model.py:167] global_iter: 4000, loss/train: 0.9256635904312134, loss/val: 1.0377983071587302
+[INFO 2019-12-30 03:58:04,908 model.py:167] global_iter: 4400, loss/train: 0.550373911857605, loss/val: 1.0277115088520627
+[INFO 2019-12-30 05:16:28,124 model.py:167] global_iter: 4800, loss/train: 0.5946522951126099, loss/val: 1.03418051293402
+[INFO 2019-12-30 06:36:08,835 model.py:167] global_iter: 5200, loss/train: 0.6883940696716309, loss/val: 1.0072074369950728
+[INFO 2019-12-30 07:54:37,016 model.py:167] global_iter: 5600, loss/train: 0.8080655336380005, loss/val: 1.0115933418273926
+[INFO 2019-12-30 09:13:28,744 model.py:167] global_iter: 6000, loss/train: 0.6199635863304138, loss/val: 1.020445420886531
+[INFO 2019-12-30 10:32:16,119 model.py:167] global_iter: 6400, loss/train: 0.6309621930122375, loss/val: 1.0014232631885644
+[INFO 2019-12-30 11:51:10,046 model.py:167] global_iter: 6800, loss/train: 0.7536593675613403, loss/val: 0.9954119126001993
+[INFO 2019-12-30 13:09:43,124 model.py:167] global_iter: 7200, loss/train: 0.5425463318824768, loss/val: 0.9957125909400709
+[INFO 2019-12-30 14:28:54,191 model.py:167] global_iter: 7600, loss/train: 0.4104193449020386, loss/val: 0.9969551599386967
+[INFO 2019-12-30 15:47:34,426 model.py:167] global_iter: 8000, loss/train: 0.5963819622993469, loss/val: 0.9867563319928718
+[INFO 2019-12-30 17:05:37,786 model.py:167] global_iter: 8400, loss/train: 0.6648547053337097, loss/val: 0.9865723487102624
+[INFO 2019-12-30 17:45:18,959 model.py:175] global_iter: 8600, loss/train: 0.629381000995636, loss/val: 0.9889297250545386
+[INFO 2019-12-30 17:47:25,466 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2019-12-30 17:47:37,298 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2019-12-30 17:47:37,792 model.py:301] end initializing scorer
+[INFO 2019-12-30 17:47:37,808 model.py:153] Start training process
+[INFO 2019-12-30 17:49:35,396 model.py:167] global_iter: 0, loss/train: 1.194610834121704, loss/val: 1.5957907889828538
+[INFO 2019-12-30 19:08:23,376 model.py:167] global_iter: 400, loss/train: 1.1296192407608032, loss/val: 1.3642585367867441
+[INFO 2019-12-30 20:26:25,343 model.py:167] global_iter: 800, loss/train: 1.3042895793914795, loss/val: 1.2519144289421313
+[INFO 2019-12-30 21:45:13,143 model.py:167] global_iter: 1200, loss/train: 1.0408002138137817, loss/val: 1.1764737277319937
+[INFO 2019-12-30 23:04:14,633 model.py:167] global_iter: 1600, loss/train: 0.7724447846412659, loss/val: 1.143398586547736
+[INFO 2019-12-31 00:23:07,934 model.py:167] global_iter: 2000, loss/train: 1.014582633972168, loss/val: 1.1389285271817988
+[INFO 2019-12-31 01:41:46,953 model.py:167] global_iter: 2400, loss/train: 0.6454344987869263, loss/val: 1.1065346761183306
+[INFO 2019-12-31 03:00:38,818 model.py:167] global_iter: 2800, loss/train: 0.7624075412750244, loss/val: 1.0736326737837358
+[INFO 2019-12-31 04:19:36,670 model.py:167] global_iter: 3200, loss/train: 1.2772526741027832, loss/val: 1.0668227022344416
+[INFO 2019-12-31 05:39:21,858 model.py:167] global_iter: 3600, loss/train: 0.9687907695770264, loss/val: 1.0610195904067068
+[INFO 2019-12-31 06:57:42,819 model.py:167] global_iter: 4000, loss/train: 0.6860941648483276, loss/val: 1.0434998400283582
+[INFO 2019-12-31 08:17:00,161 model.py:167] global_iter: 4400, loss/train: 0.6937203407287598, loss/val: 1.0321309367815654
+[INFO 2019-12-31 09:35:03,617 model.py:167] global_iter: 4800, loss/train: 0.8946607708930969, loss/val: 1.0211097038153447
+[INFO 2019-12-31 10:55:00,581 model.py:167] global_iter: 5200, loss/train: 0.6719693541526794, loss/val: 1.019731418652968
+[INFO 2019-12-31 12:13:49,517 model.py:167] global_iter: 5600, loss/train: 0.5555766224861145, loss/val: 1.0196048671549016
+[INFO 2019-12-31 13:32:17,314 model.py:167] global_iter: 6000, loss/train: 0.5301315188407898, loss/val: 1.0060059970075435
+[INFO 2019-12-31 14:50:48,691 model.py:167] global_iter: 6400, loss/train: 0.5625365972518921, loss/val: 1.0047237782767324
+[INFO 2019-12-31 16:09:22,884 model.py:167] global_iter: 6800, loss/train: 0.562274694442749, loss/val: 1.0038539351839009
+[INFO 2019-12-31 17:28:15,574 model.py:167] global_iter: 7200, loss/train: 0.8833740949630737, loss/val: 0.9922568960623308
+[INFO 2019-12-31 18:47:18,451 model.py:167] global_iter: 7600, loss/train: 0.49387213587760925, loss/val: 0.9845088611949574
+[INFO 2019-12-31 20:06:37,270 model.py:167] global_iter: 8000, loss/train: 0.41432005167007446, loss/val: 0.9962485017198505
+[INFO 2019-12-31 21:25:45,819 model.py:167] global_iter: 8400, loss/train: 0.513659656047821, loss/val: 0.9880590691710963
+[INFO 2019-12-31 22:05:34,943 model.py:175] global_iter: 8600, loss/train: 0.9328522086143494, loss/val: 0.9864075256116462
+[INFO 2019-12-31 22:07:40,835 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2019-12-31 22:07:53,063 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2019-12-31 22:07:53,582 model.py:301] end initializing scorer
+[INFO 2019-12-31 22:07:53,602 model.py:153] Start training process
+[INFO 2019-12-31 22:09:51,135 model.py:167] global_iter: 0, loss/train: 1.2467670440673828, loss/val: 1.5734677856618708
+[INFO 2019-12-31 23:29:20,159 model.py:167] global_iter: 400, loss/train: 0.847862720489502, loss/val: 1.2466385147788308
+[INFO 2020-01-01 00:47:45,993 model.py:167] global_iter: 800, loss/train: 1.170637845993042, loss/val: 1.1388385476488057
+[INFO 2020-01-01 02:06:40,952 model.py:167] global_iter: 1200, loss/train: 0.8880505561828613, loss/val: 1.1011415792234016
+[INFO 2020-01-01 03:24:54,217 model.py:167] global_iter: 1600, loss/train: 0.6254339218139648, loss/val: 1.0490134358406067
+[INFO 2020-01-01 04:43:50,980 model.py:167] global_iter: 2000, loss/train: 0.6821320652961731, loss/val: 1.0350988976883166
+[INFO 2020-01-01 06:02:28,125 model.py:167] global_iter: 2400, loss/train: 0.6534079909324646, loss/val: 1.0229400884021411
+[INFO 2020-01-01 07:21:43,933 model.py:167] global_iter: 2800, loss/train: 0.7504836320877075, loss/val: 0.998429511532639
+[INFO 2020-01-01 08:40:28,624 model.py:167] global_iter: 3200, loss/train: 0.6505380868911743, loss/val: 0.9909341136614481
+[INFO 2020-01-01 09:59:25,991 model.py:167] global_iter: 3600, loss/train: 0.672492265701294, loss/val: 0.9868549632303643
+[INFO 2020-01-01 11:17:19,034 model.py:167] global_iter: 4000, loss/train: 0.577185332775116, loss/val: 0.9781489101323214
+[INFO 2020-01-01 12:36:50,657 model.py:167] global_iter: 4400, loss/train: 0.6325247883796692, loss/val: 0.9836455782254537
+[INFO 2020-01-01 13:55:56,966 model.py:167] global_iter: 4800, loss/train: 0.7535818219184875, loss/val: 0.9840995253938617
+[INFO 2020-01-01 15:14:45,445 model.py:167] global_iter: 5200, loss/train: 0.39971017837524414, loss/val: 0.9850786292191708
+[INFO 2020-01-01 16:34:10,549 model.py:167] global_iter: 5600, loss/train: 0.5718625783920288, loss/val: 0.9706719788638029
+[INFO 2020-01-01 17:53:44,925 model.py:167] global_iter: 6000, loss/train: 0.5597625970840454, loss/val: 0.9882661664124691
+[INFO 2020-01-01 19:12:11,802 model.py:167] global_iter: 6400, loss/train: 0.5452522039413452, loss/val: 0.9783105994715835
+[INFO 2020-01-01 20:30:42,961 model.py:167] global_iter: 6800, loss/train: 0.5658680200576782, loss/val: 0.9796534903121717
+[INFO 2020-01-01 21:49:20,708 model.py:167] global_iter: 7200, loss/train: 0.5439637899398804, loss/val: 0.9735132871252118
+[INFO 2020-01-01 23:08:22,244 model.py:167] global_iter: 7600, loss/train: 0.381664514541626, loss/val: 1.0043942585135952
+[INFO 2020-01-02 00:26:13,082 model.py:167] global_iter: 8000, loss/train: 0.5940160751342773, loss/val: 0.9866911985657432
+[INFO 2020-01-02 01:45:01,049 model.py:167] global_iter: 8400, loss/train: 0.35999608039855957, loss/val: 0.9879491636247346
+[INFO 2020-01-02 02:25:04,448 model.py:175] global_iter: 8600, loss/train: 0.3593108654022217, loss/val: 0.991068751522989
+[INFO 2020-01-02 02:27:13,629 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2020-01-02 02:27:26,191 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2020-01-02 02:27:26,726 model.py:301] end initializing scorer
+[INFO 2020-01-02 02:27:26,742 model.py:153] Start training process
+[INFO 2020-01-02 02:29:26,501 model.py:167] global_iter: 0, loss/train: 1.0635637044906616, loss/val: 1.5377574147600117
+[INFO 2020-01-02 03:47:54,460 model.py:167] global_iter: 400, loss/train: 1.100771188735962, loss/val: 1.2437281409899394
+[INFO 2020-01-02 05:06:45,067 model.py:167] global_iter: 800, loss/train: 1.085249900817871, loss/val: 1.1700505144668347
+[INFO 2020-01-02 06:25:41,002 model.py:167] global_iter: 1200, loss/train: 1.208030343055725, loss/val: 1.1194360274257082
+[INFO 2020-01-02 07:44:23,648 model.py:167] global_iter: 1600, loss/train: 1.0010244846343994, loss/val: 1.0863120844869902
+[INFO 2020-01-02 09:03:00,212 model.py:167] global_iter: 2000, loss/train: 1.1646406650543213, loss/val: 1.0449526490587178
+[INFO 2020-01-02 10:22:18,263 model.py:167] global_iter: 2400, loss/train: 0.5290310382843018, loss/val: 1.0394605271744006
+[INFO 2020-01-02 11:40:34,139 model.py:167] global_iter: 2800, loss/train: 0.7814401388168335, loss/val: 1.0401932253982082
+[INFO 2020-01-02 12:59:09,939 model.py:167] global_iter: 3200, loss/train: 0.6292787790298462, loss/val: 1.0422983241803718
+[INFO 2020-01-02 14:17:31,509 model.py:167] global_iter: 3600, loss/train: 0.5509214401245117, loss/val: 1.0175196998047107
+[INFO 2020-01-02 15:36:17,817 model.py:167] global_iter: 4000, loss/train: 0.5671554803848267, loss/val: 1.0058658104954343
+[INFO 2020-01-02 16:55:07,416 model.py:167] global_iter: 4400, loss/train: 0.7420486807823181, loss/val: 0.9940306616551948
+[INFO 2020-01-02 18:12:10,949 model.py:167] global_iter: 4800, loss/train: 0.7761959433555603, loss/val: 1.0021117022543242
+[INFO 2020-01-02 19:32:26,986 model.py:167] global_iter: 5200, loss/train: 0.455613374710083, loss/val: 0.9866218729452654
+[INFO 2020-01-02 20:50:33,697 model.py:167] global_iter: 5600, loss/train: 0.5423758625984192, loss/val: 0.9916309389201078
+[INFO 2020-01-02 22:09:25,036 model.py:167] global_iter: 6000, loss/train: 0.5632175207138062, loss/val: 0.9818137974450083
+[INFO 2020-01-02 23:27:52,620 model.py:167] global_iter: 6400, loss/train: 0.7195497751235962, loss/val: 0.9826787330887534
+[INFO 2020-01-03 00:46:55,397 model.py:167] global_iter: 6800, loss/train: 0.5470219850540161, loss/val: 0.9937855312318513
+[INFO 2020-01-03 02:06:09,624 model.py:167] global_iter: 7200, loss/train: 0.46308979392051697, loss/val: 1.000748094284173
+[INFO 2020-01-03 03:25:12,057 model.py:167] global_iter: 7600, loss/train: 0.5695858001708984, loss/val: 0.9947854352719856
+[INFO 2020-01-03 04:43:27,295 model.py:167] global_iter: 8000, loss/train: 0.3531545102596283, loss/val: 0.9918226942871556
+[INFO 2020-01-03 06:02:22,158 model.py:167] global_iter: 8400, loss/train: 0.6151939630508423, loss/val: 0.9931079004750107
+[INFO 2020-01-03 06:42:22,750 model.py:175] global_iter: 8600, loss/train: 0.5426878333091736, loss/val: 0.993738201531497
+[INFO 2020-01-03 06:44:29,365 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2020-01-03 06:44:42,197 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2020-01-03 06:44:42,752 model.py:301] end initializing scorer
+[INFO 2020-01-03 06:44:42,773 model.py:153] Start training process
+[INFO 2020-01-03 06:46:44,250 model.py:167] global_iter: 0, loss/train: 1.1101306676864624, loss/val: 1.5581479506059126
+[INFO 2020-01-03 08:05:58,701 model.py:167] global_iter: 400, loss/train: 0.7842859029769897, loss/val: 1.2624098496003584
+[INFO 2020-01-03 09:24:35,694 model.py:167] global_iter: 800, loss/train: 1.1370387077331543, loss/val: 1.1632116455020327
+[INFO 2020-01-03 10:43:17,143 model.py:167] global_iter: 1200, loss/train: 0.9353582859039307, loss/val: 1.112326737606164
+[INFO 2020-01-03 12:02:24,500 model.py:167] global_iter: 1600, loss/train: 1.5881257057189941, loss/val: 1.089235650770592
+[INFO 2020-01-03 13:22:06,260 model.py:167] global_iter: 2000, loss/train: 0.8239901065826416, loss/val: 1.056654453277588
+[INFO 2020-01-03 14:39:49,525 model.py:167] global_iter: 2400, loss/train: 0.6846475601196289, loss/val: 1.0310516556104024
+[INFO 2020-01-03 15:58:45,567 model.py:167] global_iter: 2800, loss/train: 0.7635089755058289, loss/val: 1.0224771210641572
+[INFO 2020-01-03 17:17:34,476 model.py:167] global_iter: 3200, loss/train: 0.5936849117279053, loss/val: 1.0064013329419224
+[INFO 2020-01-03 18:36:10,402 model.py:167] global_iter: 3600, loss/train: 0.6193246245384216, loss/val: 0.9969426014206626
+[INFO 2020-01-03 19:55:29,199 model.py:167] global_iter: 4000, loss/train: 0.6981762647628784, loss/val: 0.9893400723283942
+[INFO 2020-01-03 21:13:50,842 model.py:167] global_iter: 4400, loss/train: 0.3745059370994568, loss/val: 0.9815763849200625
+[INFO 2020-01-03 22:32:15,617 model.py:167] global_iter: 4800, loss/train: 0.8407054543495178, loss/val: 0.9908356738812996
+[INFO 2020-01-03 23:50:25,128 model.py:167] global_iter: 5200, loss/train: 0.6645452976226807, loss/val: 1.002991638400338
+[INFO 2020-01-04 01:09:00,241 model.py:167] global_iter: 5600, loss/train: 0.5875784158706665, loss/val: 0.9798143849228368
+[INFO 2020-01-04 02:28:05,903 model.py:167] global_iter: 6000, loss/train: 0.5049192905426025, loss/val: 0.9845491430976174
+[INFO 2020-01-04 03:46:13,566 model.py:167] global_iter: 6400, loss/train: 0.6783322095870972, loss/val: 0.9813543160756429
+[INFO 2020-01-04 05:04:18,973 model.py:167] global_iter: 6800, loss/train: 0.507921040058136, loss/val: 0.982862954789942
+[INFO 2020-01-04 06:23:35,152 model.py:167] global_iter: 7200, loss/train: 0.4066641330718994, loss/val: 0.9958794568524216
+[INFO 2020-01-04 07:43:04,361 model.py:167] global_iter: 7600, loss/train: 0.6742855310440063, loss/val: 0.9965234525275953
+[INFO 2020-01-04 09:01:23,497 model.py:167] global_iter: 8000, loss/train: 0.6132289171218872, loss/val: 1.0011970816236553
+[INFO 2020-01-04 10:19:50,497 model.py:167] global_iter: 8400, loss/train: 0.5899825096130371, loss/val: 0.9854095993619977
+[INFO 2020-01-04 11:00:30,170 model.py:175] global_iter: 8600, loss/train: 0.2585579454898834, loss/val: 0.998055535735506
+[INFO 2020-01-04 11:02:36,864 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2020-01-04 11:02:49,986 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2020-01-04 11:02:50,558 model.py:301] end initializing scorer
+[INFO 2020-01-04 11:02:50,577 model.py:153] Start training process
+[INFO 2020-01-04 11:04:44,935 model.py:167] global_iter: 0, loss/train: 1.2830102443695068, loss/val: 1.5913347764448686
+[INFO 2020-01-04 12:22:48,980 model.py:167] global_iter: 400, loss/train: 1.1892645359039307, loss/val: 1.190065824624264
+[INFO 2020-01-04 13:42:00,054 model.py:167] global_iter: 800, loss/train: 0.9770436882972717, loss/val: 1.1119403839111328
+[INFO 2020-01-04 15:01:35,563 model.py:167] global_iter: 1200, loss/train: 1.0299324989318848, loss/val: 1.0722923025940403
+[INFO 2020-01-04 16:19:44,458 model.py:167] global_iter: 1600, loss/train: 0.6330859065055847, loss/val: 1.0353104598594434
+[INFO 2020-01-04 17:38:47,901 model.py:167] global_iter: 2000, loss/train: 0.7690221071243286, loss/val: 1.0196485411037097
+[INFO 2020-01-04 18:57:44,892 model.py:167] global_iter: 2400, loss/train: 0.5897507667541504, loss/val: 1.000092139749816
+[INFO 2020-01-04 20:16:08,699 model.py:167] global_iter: 2800, loss/train: 0.5830719470977783, loss/val: 1.0016576394890293
+[INFO 2020-01-04 21:34:48,449 model.py:167] global_iter: 3200, loss/train: 0.7825269103050232, loss/val: 0.9802442987759908
+[INFO 2020-01-04 22:54:27,414 model.py:167] global_iter: 3600, loss/train: 0.722309947013855, loss/val: 0.9746506936622389
+[INFO 2020-01-05 00:13:18,744 model.py:167] global_iter: 4000, loss/train: 0.6309158802032471, loss/val: 0.9779062090498029
+[INFO 2020-01-05 01:31:48,105 model.py:167] global_iter: 4400, loss/train: 0.7487518787384033, loss/val: 0.9811714282541564
+[INFO 2020-01-05 02:50:35,606 model.py:167] global_iter: 4800, loss/train: 0.6407947540283203, loss/val: 0.9688453114393986
+[INFO 2020-01-05 04:09:20,500 model.py:167] global_iter: 5200, loss/train: 0.3951847553253174, loss/val: 0.9741826725728584
+[INFO 2020-01-05 05:28:58,082 model.py:167] global_iter: 5600, loss/train: 0.408132940530777, loss/val: 0.9683871540156278
+[INFO 2020-01-05 06:47:32,681 model.py:167] global_iter: 6000, loss/train: 0.3308008015155792, loss/val: 0.9784290627999739
+[INFO 2020-01-05 08:06:43,497 model.py:167] global_iter: 6400, loss/train: 0.3721453547477722, loss/val: 0.9821261203650272
+[INFO 2020-01-05 09:25:42,977 model.py:167] global_iter: 6800, loss/train: 0.4101424813270569, loss/val: 0.9963773850238684
+[INFO 2020-01-05 10:44:12,666 model.py:167] global_iter: 7200, loss/train: 0.44988203048706055, loss/val: 0.9976457827018969
+[INFO 2020-01-05 12:02:13,748 model.py:167] global_iter: 7600, loss/train: 0.41228705644607544, loss/val: 1.005305624369419
+[INFO 2020-01-05 13:21:17,168 model.py:167] global_iter: 8000, loss/train: 0.19774985313415527, loss/val: 0.9971139340689688
+[INFO 2020-01-05 14:39:58,036 model.py:167] global_iter: 8400, loss/train: 0.26174551248550415, loss/val: 1.0105427684205952
+[INFO 2020-01-05 15:19:53,521 model.py:175] global_iter: 8600, loss/train: 0.4832310676574707, loss/val: 1.0276369380228447
+[INFO 2020-01-05 15:22:01,960 model.py:290] begin to initialize the external scorer for decoding
+[INFO 2020-01-05 15:22:15,334 model.py:300] language model: is_character_based = 0, max_order = 5, dict_size = 400000
+[INFO 2020-01-05 15:22:15,920 model.py:301] end initializing scorer
+[INFO 2020-01-05 15:22:15,943 model.py:153] Start training process
+[INFO 2020-01-05 15:24:10,680 model.py:167] global_iter: 0, loss/train: 1.5190808773040771, loss/val: 1.622808362498428
+[INFO 2020-01-05 16:42:26,829 model.py:167] global_iter: 400, loss/train: 0.8330973386764526, loss/val: 1.2164846044598203
+[INFO 2020-01-05 18:01:35,751 model.py:167] global_iter: 800, loss/train: 1.1645634174346924, loss/val: 1.1372934652097297
+[INFO 2020-01-05 19:19:13,812 model.py:167] global_iter: 1200, loss/train: 0.8858407735824585, loss/val: 1.0982759486545215
+[INFO 2020-01-05 20:37:53,057 model.py:167] global_iter: 1600, loss/train: 0.6770081520080566, loss/val: 1.0452024286443538
+[INFO 2020-01-05 21:56:26,403 model.py:167] global_iter: 2000, loss/train: 0.5937854647636414, loss/val: 1.0277622883970088
+[INFO 2020-01-05 23:15:57,356 model.py:167] global_iter: 2400, loss/train: 0.810962438583374, loss/val: 1.0229507413777439
+[INFO 2020-01-06 00:34:09,427 model.py:167] global_iter: 2800, loss/train: 0.6636725068092346, loss/val: 0.9962131055918607
+[INFO 2020-01-06 01:53:11,895 model.py:167] global_iter: 3200, loss/train: 0.5802489519119263, loss/val: 0.99809345332059
+[INFO 2020-01-06 03:11:25,813 model.py:167] global_iter: 3600, loss/train: 0.6650241613388062, loss/val: 0.989498546629241
+[INFO 2020-01-06 04:30:50,803 model.py:167] global_iter: 4000, loss/train: 0.5492663979530334, loss/val: 0.9791259747562986
+[INFO 2020-01-06 05:49:19,746 model.py:167] global_iter: 4400, loss/train: 0.47351765632629395, loss/val: 0.9837410576415785
+[INFO 2020-01-06 07:07:52,045 model.py:167] global_iter: 4800, loss/train: 0.698857843875885, loss/val: 0.9866884242404591
+[INFO 2020-01-06 08:26:32,381 model.py:167] global_iter: 5200, loss/train: 0.6896036863327026, loss/val: 0.9908686605366793
+[INFO 2020-01-06 09:45:18,780 model.py:167] global_iter: 5600, loss/train: 0.3190799951553345, loss/val: 0.9902343822248054
+[INFO 2020-01-06 11:04:11,969 model.py:167] global_iter: 6000, loss/train: 0.47960567474365234, loss/val: 0.9887576049024408
+[INFO 2020-01-06 12:23:03,463 model.py:167] global_iter: 6400, loss/train: 0.3541783094406128, loss/val: 0.9958448247476057
+[INFO 2020-01-06 13:41:34,603 model.py:167] global_iter: 6800, loss/train: 0.4264201819896698, loss/val: 1.0024019389441519
+[INFO 2020-01-06 15:00:26,011 model.py:167] global_iter: 7200, loss/train: 0.4235039949417114, loss/val: 1.0213737939343308
+[INFO 2020-01-06 16:19:15,814 model.py:167] global_iter: 7600, loss/train: 0.3409419059753418, loss/val: 1.0119998473109622
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/chliu/miniconda3/envs/pytorch/lib/python3.6/multiprocessing/pool.py", line 119, in worker
+    result = (True, func(*args, **kwds))
+  File "/home/chliu/miniconda3/envs/pytorch/lib/python3.6/multiprocessing/pool.py", line 44, in mapstar
+    return list(map(*args))
+  File "utts_slicing.py", line 18, in worker
+    new_utts = splitting.utt_split(row)
+  File "/home/chliu/github/pytorch/DeepSpeech/notebooks/TEST_utt_split.py", line 75, in utt_split
+    disfluencies = disfluencies)
+  File "/home/chliu/github/pytorch/DeepSpeech/notebooks/TEST_utt_split.py", line 13, in trans_alignment
+    with gentle.resampled(audiofile, offset=st, duration=duration) as wavfile:
+  File "/home/chliu/miniconda3/envs/pytorch/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/chliu/github/forced_alignment/gentle/gentle/resample.py", line 45, in resampled
+    raise RuntimeError("Unable to resample/encode '%s'" % infile)
+RuntimeError: Unable to resample/encode '/home/chliu/iconect_data/analysis/data/PCON1009/Wk01/audio/PCON1009_VidChat_3_FullConvo_Wk01_Day01_17072017.wav'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "utts_slicing.py", line 32, in <module>
+    pd.DataFrame(multi_task(val_set)).to_csv("iconect/models/pt_only_all_utt_sliced/train.csv")
+  File "utts_slicing.py", line 24, in multi_task
+    result = pool.map(worker, dataset_slicing(dataset, 10))
+  File "/home/chliu/miniconda3/envs/pytorch/lib/python3.6/multiprocessing/pool.py", line 266, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "/home/chliu/miniconda3/envs/pytorch/lib/python3.6/multiprocessing/pool.py", line 644, in get
+    raise self._value
+RuntimeError: Unable to resample/encode '/home/chliu/iconect_data/analysis/data/PCON1009/Wk01/audio/PCON1009_VidChat_3_FullConvo_Wk01_Day01_17072017.wav'

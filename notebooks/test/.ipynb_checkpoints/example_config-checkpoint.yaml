@@ -1,0 +1,16 @@
+optimizer:
+    learning_rate: 7e-6
+    included_layer_keywords: 
+        - deeplearning
+    excluded_layer_keywords: 
+        - bias
+        
+scheduler:
+    scheduler_name: 
+    gamma: 
+    
+    
+training:
+    
+    
+

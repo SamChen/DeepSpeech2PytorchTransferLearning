@@ -1,0 +1,29 @@
+basic:
+  exp_root_path: "./iconect/models/pt_only_all_utt_wgt_transfer_mean"
+  # default load the deepspeech2 model from paddlepaddle
+  # this is for load pytorch pretrained model
+  pretrained_model_path: None
+  num_epochs_train: 40
+  num_iterations_validate: 200,
+  num_sorta_epoch: 0
+  batch_size: 16
+  augmentation_config_path:
+
+# a special module will check the validation of these files and some special dirs
+data:
+  train_csv: "train_short.csv"
+  val_csv:   "val_short.csv"
+  test_csv:  "test_short.csv"
+
+optimizer:
+  learning_rate: 7e-6
+  included_layer_keywords:
+      - deeplearning
+  excluded_layer_keywords: None
+
+scheduler:
+  scheduler_name:
+  gamma: 1.0
+
+
+
