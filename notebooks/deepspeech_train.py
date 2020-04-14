@@ -4,117 +4,146 @@ import os
 import sys
 import pandas as pd
 from datetime import datetime
+from distutils.dir_util import mkpath
+import shutil
 from collections import defaultdict
 sys.path.append("..")
 
 from model_utils.model import DeepSpeech2Model
+from utils.yaml_loader import load_yaml_config
 import model_utils.network as network
 from data_utils.dataloader import SpecgramGenerator
+
+import torch
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
+import ruamel.yaml as yaml
+
+networks = {"network.deepspeech_orig"         : network.deepspeech_orig,
+            "network.deepspeech_newbottleneck": network.deepspeech_newbottleneck}
+
+def main(config):
+
+    model=networks[config["basic"]["model"]]
+
+    pretrained_model_path=config["basic"]["pt_model_path"]
+    device = config["basic"]["device"]
+    exp_root_dir=config["basic"]["exp_root_path"]
+    ds2_model_path=config["basic"]["ds2_model_path"]
+    augmentation_config_path=config["basic"]["augmentation_config_path"]
+    language_model_path=config["basic"]["language_model_path"]
+    vocab_filepath=config["basic"]["vocab_filepath"]
+    mean_std_filepath=config["basic"]["mean_std_filepath"]
+
+    batch_size=config["train"]["batch_size"]
+    max_duration=config["train"]["max_duration"]
+    min_duration=config["train"]["min_duration"]
+    segmented=config["train"]["segmented"]
+    num_passes=config["train"]["num_total_epochs"]
+    num_iterations_print=config["train"]["num_iterations_validate"]
+    sorta_epoch=config["train"]["num_sorta_epoch"]
+    num_workers=config["train"]["num_workers"]
+    
+    print(num_workers)
+    
+    
+    # max_duration=config["test"]["max_duration"],
+    # min_duration=config["test"]["min_duration"],
+    # batch_size=config["test"]["batch_size"]
+    # max_duration=config["test"]["max_duration"]
+    # min_duration=config["test"]["min_duration"]
+    # segmented=config["test"]["segmented"]
+    # num_workers=config["test"]["num_workers"]
+
+    train_csv=config["data"]["train_csv"]
+    val_csv=  config["data"]["val_csv"]
+    test_csv= config["data"]["test_csv"]
+
+    lr=config["optimizer"]["learning_rate"]
+    included_lr_key=config["optimizer"]["included_layer_keywords"]
+    excluded_lr_key=config["optimizer"]["excluded_layer_keywords"]
+
+    scheduler_gamma=config["scheduler"]["gamma"]
+
+    if augmentation_config_path:
+        with open(os.path.join(exp_root_dir, "conf/augmentation.config"), 'r') as f:
+            augmentation_config = f.read()
+    else:
+        augmentation_config = "{}"
 
 
-def main(network, lr, lr_key, num_passes=40,
-         num_iterations_print=400, augmentation_config="{}",
-         batch_size=32,
-         output_root_dir="./iconect/models/pt_only_all_utt/",
-         train_csv="train.csv",
-         val_csv="val.csv",
-         test_csv="test.csv"):
+    filename = datetime.now().strftime("%y%m%d-%H:%M:%S")
+    output_dir = os.path.join(exp_root_dir, "exps", filename)
+    mkpath(os.path.join(output_dir, "models"))
+    mkpath(os.path.join(output_dir, "vals"))
+    # shutil.copy2(config_path, os.path.join(output_dir, "experiment.yaml"))
+    with open(os.path.join(output_dir, "experiment.yaml"), 'w') as f:
+        yaml.safe_dump(config, stream=f)
 
-    train_dataset = SpecgramGenerator(manifest=os.path.join(output_root_dir, train_csv),
-                                      vocab_filepath="../models/baidu_en8k/vocab.txt",
-                                      mean_std_filepath="../models/baidu_en8k/mean_std.npz",
-                                      max_duration=float('inf'),
-                                      min_duration=3.0,
+    log_dir=os.path.join(exp_root_dir, "tensorboard", filename)
+
+
+
+    train_dataset = SpecgramGenerator(manifest=os.path.join(exp_root_dir, "data", train_csv),
+                                      vocab_filepath=vocab_filepath,
+                                      mean_std_filepath=mean_std_filepath,
                                       augmentation_config=augmentation_config,
-                                      segmented=False)
-
-    val_dataset = SpecgramGenerator(manifest=os.path.join(output_root_dir, val_csv),
-                                    vocab_filepath="../models/baidu_en8k/vocab.txt",
-                                    mean_std_filepath="../models/baidu_en8k/mean_std.npz",
-                                    max_duration=float('inf'),
-                                    min_duration=3.0,
-                                    segmented=False)
-
-    train_dataloader = DataLoader(train_dataset, batch_size=batch_size,
-                                  shuffle=False, num_workers=4,
-                                  collate_fn=SpecgramGenerator.padding_batch)
-
-    val_dataloader = DataLoader(val_dataset, batch_size=batch_size,
-                                  shuffle=False, num_workers=3,
-                                  collate_fn=SpecgramGenerator.padding_batch)
-
-    vocab_list = ["'", ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-    ds2_model = DeepSpeech2Model(
-        network=network,
-        vocab_size=28,
-        pretrained_model_path="TBD",
-        device="cuda")
+                                      max_duration=max_duration,   #20,
+                                      min_duration=min_duration, # 3
+                                      segmented=segmented) # False
 
 
-    ds2_model.init_ext_scorer(1.4, 0.35, "../models/lm/common_crawl_00.prune01111.trie.klm", vocab_list=vocab_list)
+    val_dataset = SpecgramGenerator(manifest=os.path.join(exp_root_dir, "data", val_csv),
+                                    vocab_filepath=vocab_filepath,
+                                    mean_std_filepath=mean_std_filepath,
+                                    max_duration=max_duration,   #20,
+                                    min_duration=min_duration, # 3
+                                    segmented=segmented) # False
 
+    vocab_list = ["'", ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                  'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-    filename = datetime.now().strftime("lr{}-{}_%y%m%d-%H:%M:%S".format(lr, "_".join(lr_key)))
-    output_dir = os.path.join(output_root_dir, "exps", filename)
-    log_dir=os.path.join(output_root_dir, "tensorboard", filename)
+    ds2_model = DeepSpeech2Model(model=model,
+                                 ds2_model_path=ds2_model_path,
+                                 vocab_list=vocab_list,
+                                 device=device)
+
     tensorboard_writer = SummaryWriter(log_dir=log_dir)
-    ds2_model.train(train_dataloader=train_dataloader, val_dataloader=val_dataloader,
-                    lr_key=lr_key,
-                    learning_rate=lr,
-                    gradient_clipping=400,
-                    num_passes=num_passes,
-                    num_iterations_print=num_iterations_print,
-                    writer=tensorboard_writer,
-                    output_dir=output_dir)
+    with open(os.path.join(output_dir, "model_info.txt"), 'w') as f:
+        f.write("DNN structure: \n{}\n".format(ds2_model.model))
 
-    outputs = defaultdict(list)
-    #TODO: make it as a function for DeepSpeech Class
-    for i_batch, sample_batched in enumerate(val_dataloader):
-        batch_results = ds2_model.infer_batch_probs(infer_data=sample_batched)
-        batch_transcripts_beam = ds2_model.decode_batch_beam_search(probs_split=batch_results,
-                                                                     beam_alpha=1.4,
-                                                                     beam_beta=0.35,
-                                                                     beam_size=500,
-                                                                     cutoff_prob=1.0,
-                                                                     cutoff_top_n=40,
-                                                                     vocab_list=vocab_list,
-                                                                     num_processes=5)
+    if pretrained_model_path:
+        ds2_model.load_weights(pretrained_model_path)
 
-        outputs["uttid"].extend(sample_batched["uttid"])
-        outputs["probs"].extend(batch_results)
-        outputs["asr"].extend(batch_transcripts_beam)
-        outputs["text"].extend(sample_batched["trans"])
+    ds2_model.init_ext_scorer(1.4, 0.35, language_model_path)
 
-    df = pd.DataFrame.from_dict(outputs)
+    ds2_model.train(
+        train_dataset=train_dataset,
+        train_batchsize=batch_size,
+        val_dataset=val_dataset,
+        val_batchsize=batch_size,
+        collate_fn=SpecgramGenerator.padding_batch,
+        lr_key=included_lr_key,
+        exclue_lr_key=excluded_lr_key,
+        learning_rate=lr,
+        scheduler_gamma=scheduler_gamma,
+        gradient_clipping=40,
+        num_passes=num_passes,
+        num_iterations_print=num_iterations_print,
+        writer=tensorboard_writer,
+        output_dir=output_dir,
+        sorta_epoch=sorta_epoch,
+        num_workers=num_workers)
 
-    df.to_pickle(os.path.join(output_root_dir, "decoded", "deepspeech_val_{}.pkl".format(filename)))
 
 if __name__ == "__main__":
     from itertools import product
+    import sys
 
-    network=network.deepspeech_LocalDotAtten
-    # network=deepspeech_orig
-    lr=5e-5# 7e-6
-    lr_key = ["deepspeech_exp_layers"]
-
-    output_root_dir="./iconect/models/pt_only_all_utt_sliced4"
-    train_csv = "data/train_short.csv"
-    val_csv   = "data/val_short.csv"
-    test_csv  = "data/test_short.csv"
-
-    with open(os.path.join(output_root_dir, "conf/augmentation.config"), 'r') as f:
-        augmentation_config = f.read()
-
-    main(network=network,
-         lr=lr, lr_key=lr_key,
-         num_passes=40, num_iterations_print=200,
-         augmentation_config=augmentation_config,
-         batch_size=16,
-         output_root_dir=output_root_dir,
-         train_csv=train_csv,
-         val_csv=val_csv,
-         test_csv=test_csv)
-
+    exp_yaml = sys.argv[1]
+    if not exp_yaml:
+        exp_yaml = "example/conf/experiment.yaml"
+    
+    config = load_yaml_config(exp_yaml)
+    # it looks like batch size is not the larger the better.
+    main(config)

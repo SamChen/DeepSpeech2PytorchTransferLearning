@@ -16,22 +16,20 @@ from collections import defaultdict
 import pandas as pd
 from torch.utils.data import DataLoader
 
-# TODO: compile swig in initial installing
+# try:
 from decoders.swig_wrapper import Scorer
 from decoders.swig_wrapper import ctc_greedy_decoder
 from decoders.swig_wrapper import ctc_beam_search_decoder_batch
-
-# from decoders.scorer_deprecated   import Scorer
-# from decoders.decoders_deprecated import ctc_beam_search_decoder_batch
-# from decoders.decoders_deprecated import ctc_greedy_decoder
+# except:
+#     from decoders.scorer_deprecated   import Scorer
+#     from decoders.decoders_deprecated import ctc_greedy_decoder
+#     from decoders.decoders_deprecated import ctc_beam_search_decoder_batch
 
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
 
-# import baidu ctc. CTCloss in pytorch1.3 still has some bugs
-# using pytorch1.4 as test environment
 # from warpctc_pytorch import CTCLoss
 from torch.nn import CTCLoss
 
@@ -52,9 +50,6 @@ class DeepSpeech2Model(object):
 
     :param vocab_size: Decoding vocabulary size.
     :type vocab_size: int
-    :param pretrained_model_path: Pretrained model path. If None, will train
-                                  from stratch.
-    :type pretrained_model_path: basestring|None
     :param share_rnn_weights: Whether to share input-hidden weights between
                               forward and backward directional RNNs.Notice that
                               for GRU, weight sharing is not supported.
@@ -62,8 +57,8 @@ class DeepSpeech2Model(object):
     """
 
     def __init__(self, model,
+                 ds2_model_path,
                  vocab_list,
-                 pretrained_model_path,
                  device):
         self.vocab_size = len(vocab_list)
         self.vocab_list = vocab_list
@@ -71,7 +66,7 @@ class DeepSpeech2Model(object):
         self.model = self._create_model(model,
                                         self.vocab_size,
                                         self.device)
-        self._load_paddle_pretrained()
+        self._load_paddle_pretrained(ds2_model_path)
         self.model.to(self.device)
 
         self._inferer = None
@@ -101,7 +96,8 @@ class DeepSpeech2Model(object):
               writer,
               num_iterations_print=100,
               feeding_dict=None,
-              sorta_epoch=True
+              sorta_epoch=0,
+              num_workers=10
               ):
         """Train the model for one epoch
 
@@ -162,15 +158,16 @@ class DeepSpeech2Model(object):
         optimizer = optim.AdamW(tuned_param.values(), lr=learning_rate)
         # optimizer = optim.Adam(tuned_param.values(), lr=learning_rate,
         #                         betas=(0.9, 0.98), eps=1e-9)
+
         scheduler = optim.lr_scheduler.ExponentialLR(optimizer,
                                                      gamma=scheduler_gamma,
                                                      last_epoch=-1)
         torch.nn.utils.clip_grad_norm_(tuned_param.values(), max_norm=gradient_clipping)
 
-        num_workers=10
         val_dataloader = DataLoader(val_dataset, batch_size=val_batchsize,
                                     shuffle=False, num_workers=num_workers,
                                     collate_fn=collate_fn)
+
         self.logger.info("Start training process")
         global_iter = 0
         last_lr = learning_rate
@@ -487,11 +484,10 @@ class DeepSpeech2Model(object):
         adapted_batch["cnn_masks"] = mask_length
         return adapted_batch
 
-    def _load_paddle_pretrained(self):
-        # """Load pretrained DeepSpeech parameters."""
-        from model_utils.paddle_weights_loading import pretrained_weights
+    def _load_paddle_pretrained(self, model_path):
+        """Load pretrained DeepSpeech parameters."""
         assert self.model
-        self.model.load_paddle_pretrained()
+        self.model.load_paddle_pretrained(model_path)
 
 
     def _create_model(self, model, vocab_size, device):

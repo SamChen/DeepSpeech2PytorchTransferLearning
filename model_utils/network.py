@@ -36,11 +36,11 @@ class deepspeech_hiddenLayers(nn.Module):
         self.bigru2 = DynamicGRUlayer(GRU_hiddenCell, input_size=2048, hidden_size=1024,gate_act="sigmoid", state_act="relu")
 
 
-    def load_paddle_pretrained(self):
+    def load_paddle_pretrained(self, model_path):
         """
         the weights relationship is hardcoded.
         """
-        pretrained_weights = load_weights_hiddenlayers()
+        pretrained_weights = load_weights_hiddenlayers(model_path=model_path)
         check_dict = self.state_dict()
         for key in check_dict:
             if 'num_batches_tracked' in key:
@@ -183,8 +183,8 @@ class deepspeech_bottleneckLayer(nn.Module):
         # vocab list:  ["'", ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         self.bottleneck = nn.Linear(2048, self.vocab_size + 1)
 
-    def load_paddle_pretrained(self):
-        pretrained_weights = load_weights_bottleneck()
+    def load_paddle_pretrained(self, model_path):
+        pretrained_weights = load_weights_bottleneck(model_path=model_path)
         check_dict = self.state_dict()
         for key in check_dict:
             if 'num_batches_tracked' in key:
@@ -221,7 +221,7 @@ class deepspeech_outputLayer(nn.Module):
         super(deepspeech_outputLayer, self).__init__()
         self.device = device
 
-    def load_paddle_pretrained(self):
+    def load_paddle_pretrained(self, model_path):
         pass
 
     def forward(self, x, sample_lengths):
@@ -251,10 +251,10 @@ class deepspeech_orig(nn.Module):
         self.deepspeech_bottleneck   = deepspeech_bottleneckLayer(self.device)
         self.deepspeech_output       = deepspeech_outputLayer(self.device)
 
-    def load_paddle_pretrained(self):
-        self.deepspeech_hiddenlayers.load_paddle_pretrained()
-        self.deepspeech_bottleneck.load_paddle_pretrained()
-        self.deepspeech_output.load_paddle_pretrained()
+    def load_paddle_pretrained(self, model_path):
+        self.deepspeech_hiddenlayers.load_paddle_pretrained(model_path)
+        self.deepspeech_bottleneck.load_paddle_pretrained(model_path)
+        self.deepspeech_output.load_paddle_pretrained(model_path)
 
     def forward(self, input):
         x = self.deepspeech_hiddenlayers(input)
@@ -271,9 +271,9 @@ class deepspeech_newbottleneck(nn.Module):
         self.deepspeech_bottleneck   = deepspeech_bottleneckLayer(self.device)
         self.deepspeech_output       = deepspeech_outputLayer(self.device)
 
-    def load_paddle_pretrained(self):
-        self.deepspeech_hiddenlayers.load_paddle_pretrained()
-        self.deepspeech_output.load_paddle_pretrained()
+    def load_paddle_pretrained(self, model_path):
+        self.deepspeech_hiddenlayers.load_paddle_pretrained(model_path)
+        self.deepspeech_output.load_paddle_pretrained(model_path)
 
     def forward(self, input):
         x = self.deepspeech_hiddenlayers(input)
@@ -292,9 +292,9 @@ class deepspeech_LocalSelfAtten(nn.Module):
         self.deepspeech_bottleneck = deepspeech_bottleneckLayer(self.device)
         self.deepspeech_output = deepspeech_outputLayer(self.device)
 
-    def load_paddle_pretrained(self):
-        self.deepspeech_hiddenlayers.load_paddle_pretrained()
-        self.deepspeech_bottleneck.load_paddle_pretrained()
+    def load_paddle_pretrained(self, model_path):
+        self.deepspeech_hiddenlayers.load_paddle_pretrained(model_path)
+        self.deepspeech_bottleneck.load_paddle_pretrained(model_path)
         self.deepspeech_output.load_paddle_pretrained()
 
     def forward(self, input):
@@ -316,8 +316,8 @@ class deepspeech_LocalDotAtten(nn.Module):
         self.deepspeech_output = deepspeech_outputLayer(self.device)
 
         self.window_size = 5# window_size
-    def load_paddle_pretrained(self):
-        self.deepspeech_hiddenlayers.load_paddle_pretrained()
+    def load_paddle_pretrained(self, model_path):
+        self.deepspeech_hiddenlayers.load_paddle_pretrained(model_path)
         self.deepspeech_output.load_paddle_pretrained()
 
     def forward(self, input):

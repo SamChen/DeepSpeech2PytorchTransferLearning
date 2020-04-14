@@ -1,0 +1,58 @@
+basic:
+  exp_root_path: "/Users/chliu/github/deepspeech/notebooks/example/"
+  # model: "network.deepspeech_orig"
+  model: "network.deepspeech_orig"
+  # default load the deepspeech2 model from paddlepaddle
+  # this is for load pytorch pretrained model
+  ds2_model_path: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/params/"
+  pt_model_path:
+  use_pt_model: False
+  device: "cpu"
+  augmentation_config_path: "augmentation.config"
+  vocab_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/vocab.txt"
+  mean_std_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/mean_std.npz"
+  language_model_path: "/Users/chliu/github/deepspeech_extra/models/lm/common_crawl_00.prune01111.trie.klm"
+
+
+train:
+  num_total_epochs: 40
+  num_iterations_validate: 200
+  num_sorta_epoch: 3
+  num_workers: 10
+  batch_size: 16
+  max_duration: 20
+  min_duration: 3
+  segmented: True
+
+test:
+  num_workers: 10
+  batch_size: 16
+  max_duration: 10000
+  min_duration: 3
+  segmented: True
+
+
+# a special module will check the validation of these files and some special dirs
+data:
+  train_csv: "example.csv"
+  val_csv:   "example.csv"
+  test_csv:  "example.csv"
+
+optimizer:
+  learning_rate: 7e-6
+  included_layer_keywords:
+      - deepspeech_bottleneck
+      - bigru2
+      - bigru1
+      - bigru0
+      - conv_bn_mask1
+      - conv_bn_mask0
+  excluded_layer_keywords:
+
+# have not been used yet.
+scheduler:
+  scheduler_name:
+  gamma: 1.0
+
+
+

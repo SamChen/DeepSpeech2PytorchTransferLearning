@@ -1,4 +1,11 @@
-scipy==0.13.1
-resampy==0.1.5
-SoundFile==0.9.0.post1
+numpy
+scipy
+pandas
+librosa
+resampy
+SoundFile
 python_speech_features
+tensorboard
+torch 
+torchvision
+ruamel.yaml

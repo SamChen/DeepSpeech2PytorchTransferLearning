@@ -23,7 +23,7 @@ class Scorer(object):
     :type model_path: basestring
     """
 
-    def __init__(self, alpha, beta, model_path):
+    def __init__(self, alpha, beta, model_path, vocabulary):
         self._alpha = alpha
         self._beta = beta
         if not os.path.isfile(model_path):
