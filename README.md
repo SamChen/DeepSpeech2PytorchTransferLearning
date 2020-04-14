@@ -144,6 +144,7 @@ The English corpus is from the [Common Crawl Repository](http://commoncrawl.org)
   * Top 400,000 most frequent words are selected to build the vocabulary and the rest are replaced with 'UNKNOWNWORD'.
 
 ## Released Models
+Download DeepSpeech model and Language Model from here[]
 
 ### Speech Model Adatped 
 Currently, we only adapted the BaiduEN8k Model.  
