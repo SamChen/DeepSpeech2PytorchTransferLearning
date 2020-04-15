@@ -76,6 +76,7 @@ For experiment purpose, the folder structure is data-oriented. `conf` stores all
 
 ### Manifest for data
 Our pytorch version takes a `.csv` file as its data set interface. This csv file should contain following columns: 
+
 | Calumn name |                                                                     Description |
 | :---------- | ------------------------------------------------------------------------------: |
 | uttid       |                                                                    utterance ID |
