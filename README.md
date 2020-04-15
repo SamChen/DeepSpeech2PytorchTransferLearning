@@ -1,6 +1,6 @@
 # DeepSpeech2 on Pytorch 
 
-* This repo implement a pytorch-based DeepSpeech2 that can load the DeepSpeech2 model which is pretrained on PaddlePaddle. 
+* This repo implement a pytorch-based DeepSpeech2 that can load the DeepSpeech2 model which is pretrained on PaddlePaddle. Create this repo is for transfer-learning related experiment. 
 
 ## Table of Contents
 - [DeepSpeech2 on Pytorch](#deepspeech2-on-pytorch)
@@ -14,8 +14,12 @@
     - [Configuration](#configuration)
       - [Experiment setting](#experiment-setting)
       - [Data Augmentation](#data-augmentation)
-  - [Training a model](#training-a-model)
-  - [Inference and Evaluation](#inference-and-evaluation)
+  - [Example](#example)
+    - [Creating Example](#creating-example)
+    - [Download DS2 model and Language Model](#download-ds2-model-and-language-model)
+    - [Training a model](#training-a-model)
+    - [Inference and Evaluation](#inference-and-evaluation)
+  - [Code Structure](#code-structure)
   - [Language Model](#language-model)
     - [English LM](#english-lm)
   - [Released Models](#released-models)
@@ -45,11 +49,12 @@ or, installing them via `homebrew` or `linuxbrew`:
 brew install flac libogg libvorbis boost pkg-config eigen
 ```
 
-- Run `setup.sh` to install all python packages and compile a C-based decoder. On MacOS, one may not be able to compile the decoder successfully. It will not influnce the functionality of program and only reduce the decoding speed as the code will call the python-based decoder.
+- Run `setup.sh` to install all python packages and compile a C-based decoder. 
 
 ## Getting Started
 ### Structure 
-For experiment purpose, the folder structure is data-oriented. `conf` stores all configurations for the training. And, `exps` and `tensorboard` store all experiment result and intermediat data, including corresponding configurations. Experiments are named by the starting time.
+For experiment purpose, the folder structure is data-oriented. `conf` stores all configurations for the training. And, `exps` and `tensorboard` store all experiment result and intermediat data, including corresponding configurations. Experiments are named by the starting time. 
+
 ```
 ├── conf
 │   ├── augmentation.config
@@ -74,10 +79,10 @@ Our pytorch version takes a `.csv` file as its data set interface. This csv file
 | Calumn name |                                                                     Description |
 | :---------- | ------------------------------------------------------------------------------: |
 | uttid       |                                                                    utterance ID |
-| st          | start time of the utterance (Required, if set `segmented=True` for dataloader). |
-| et          |   end time of the utterance (Required, if set `segmented=True` for dataloader.) |
+| st          | start time of the utterance (Required, if set `segmented=False` for dataloader). |
+| et          |   end time of the utterance (Required, if set `segmented=False` for dataloader.) |
 | text        |                                                           Manual transcription. |
-| audio_path  |                                                   path of the utterance's audio |
+| audio_path  |                                                   absolute path of audio recordings|
 | duration    |                                                          duration of the audio. |
 
 ### Configuration
@@ -115,24 +120,46 @@ In order to inform the trainer of what augmentation components are needed and wh
 
 If the dataloader is set by this example configuration, every audio clip which is loader by the dataloader will be processed by two steps: First, with 60% of chance, it will be speed perturbed with a uniformly random sampled speed-rate between 0.95 and 1.05. And second, with 80% of chance it will be shifted in time with a random sampled offset between -5 ms and 5 ms. The newly synthesized audio clip will be feed into the feature extractor for further training.
 
-For other configuration examples, please refer to `notebooks/example/conf/augmenatation.conf`.
+For other configuration examples, please refer to `notebooks/example/conf/augmentation.conf`.
 
 Be careful when utilizing the data augmentation technique, as improper augmentation will do harm to the training, due to the enlarged train-test gap.
 
-## Training a model
-Run following code for training:
+## Example
+### Creating Example
+Several audio recordings from Voxforge are stored in `notebooks/example/audio`. Since the manifest requirements absolution path for each recording. The user has to run `generate_manifest.py` to generate example manifest. In this example, `train set`, `val set` and `test set` are point to the `example.csv`. 
+```
+cd notebooks/example
+python generate_manifest.py
+```
+
+### Download DS2 model and Language Model
+Download DeepSpeech model and Language Model from the following [link](https://ohsu.app.box.com/folder/110543895998). This should take a while as the language model is huge. In the meantime, change `ds2_model_path`, `language_model_path`, `vocab_filepath` and `mean_std_filepath` accordingly. 
+
+### Training a model
+<font color=red> Training on CPU is runnable, but it is super slow.</font>Run following code for training:
 ```
 cd notebooks
 python deepspeech_train.py example/conf/experiment.yaml
 ```
 
 
-## Inference and Evaluation
+### Inference and Evaluation
 Run following code for testing:
 ```
 cd notebooks
 python deepspeech_test.py example/conf/experiment.yaml example/decoded
 ```
+
+## Code Structure
+Important codes are distributed to five folders. Data augmentation and decoder comes from PaddlePaddle version. Rewrite the network part.  
+```
+├── data_utils: code for data augmentation and dataloader
+├── decoders: code for decoding
+├── model_utils: code for networds 
+├── notebooks: example and other test code
+└── utils: yaml reader
+```
+
 
 ## Language Model
 
@@ -144,7 +171,7 @@ The English corpus is from the [Common Crawl Repository](http://commoncrawl.org)
   * Top 400,000 most frequent words are selected to build the vocabulary and the rest are replaced with 'UNKNOWNWORD'.
 
 ## Released Models
-Download DeepSpeech model and Language Model from here[]
+Currently, only we only transform the BaiduEN8k. The model trained on Librispeech will be our future work.
 
 ### Speech Model Adatped 
 Currently, we only adapted the BaiduEN8k Model.  

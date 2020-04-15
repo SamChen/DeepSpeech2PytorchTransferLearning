@@ -1,17 +1,19 @@
 basic:
+  # Please change these absolut paths for your computer
+  ds2_model_path: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/params/"
+  language_model_path: "/Users/chliu/github/deepspeech_extra/models/lm/common_crawl_00.prune01111.trie.klm"
+  vocab_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/vocab.txt"
+  mean_std_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/mean_std.npz"
+
   exp_root_path: "/Users/chliu/github/deepspeech/notebooks/example/"
   # model: "network.deepspeech_orig"
   model: "network.deepspeech_orig"
   # default load the deepspeech2 model from paddlepaddle
   # this is for load pytorch pretrained model
-  ds2_model_path: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/params/"
   pt_model_path:
   use_pt_model: False
   device: "cpu"
-  augmentation_config_path: "augmentation.config"
-  vocab_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/vocab.txt"
-  mean_std_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/mean_std.npz"
-  language_model_path: "/Users/chliu/github/deepspeech_extra/models/lm/common_crawl_00.prune01111.trie.klm"
+  augmentation_config_name: "augmentation.config"
 
 
 train:
@@ -31,8 +33,7 @@ test:
   min_duration: 3
   segmented: True
 
-
-# a special module will check the validation of these files and some special dirs
+#TODO: a special module should check the validation of these files and some special dirs
 data:
   train_csv: "example.csv"
   val_csv:   "example.csv"
@@ -49,7 +50,7 @@ optimizer:
       - conv_bn_mask0
   excluded_layer_keywords:
 
-# have not been used yet.
+# multi-scheduler options have not been impletemented yet.
 scheduler:
   scheduler_name:
   gamma: 1.0

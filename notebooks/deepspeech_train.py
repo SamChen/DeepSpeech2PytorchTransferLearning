@@ -30,7 +30,7 @@ def main(config):
     device = config["basic"]["device"]
     exp_root_dir=config["basic"]["exp_root_path"]
     ds2_model_path=config["basic"]["ds2_model_path"]
-    augmentation_config_path=config["basic"]["augmentation_config_path"]
+    augmentation_config_name=config["basic"]["augmentation_config_name"]
     language_model_path=config["basic"]["language_model_path"]
     vocab_filepath=config["basic"]["vocab_filepath"]
     mean_std_filepath=config["basic"]["mean_std_filepath"]
@@ -65,8 +65,8 @@ def main(config):
 
     scheduler_gamma=config["scheduler"]["gamma"]
 
-    if augmentation_config_path:
-        with open(os.path.join(exp_root_dir, "conf/augmentation.config"), 'r') as f:
+    if augmentation_config_name:
+        with open(os.path.join(exp_root_dir, "conf",augmentation_config_name), 'r') as f:
             augmentation_config = f.read()
     else:
         augmentation_config = "{}"

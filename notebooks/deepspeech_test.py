@@ -33,7 +33,7 @@ def test(config):
     ds2_model_path=config["basic"]["ds2_model_path"]
     pt_model_path = config["basic"]["pt_model_path"]
     use_pt_model = config["basic"]["use_pt_model"]
-    augmentation_config_path=config["basic"]["augmentation_config_path"]
+    augmentation_config_name=config["basic"]["augmentation_config_name"]
     language_model_path=config["basic"]["language_model_path"]
     vocab_filepath=config["basic"]["vocab_filepath"]
     mean_std_filepath=config["basic"]["mean_std_filepath"]
