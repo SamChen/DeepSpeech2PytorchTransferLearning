@@ -127,7 +127,7 @@ Be careful when utilizing the data augmentation technique, as improper augmentat
 
 ## Example
 ### Creating Example
-Several audio recordings from Voxforge are stored in `notebooks/example/audio`. Since the manifest requirements absolution path for each recording. The user has to run `generate_manifest.py` to generate example manifest. In this example, `train set`, `val set` and `test set` are point to the `example.csv`. 
+Several audio recordings from Voxforge are stored in `notebooks/example/audio`. Since the manifest requirements absolution path for each recording. The user has to run `generate_manifest.py` to generate example manifest. In this example, `train set`, `val set` and `test set` are pointed to the `example.csv`. 
 ```
 cd notebooks/example
 python generate_manifest.py
