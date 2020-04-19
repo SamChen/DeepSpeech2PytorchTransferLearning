@@ -20,7 +20,7 @@ def check_validation(input):
         file = os.path.join(exp_root_path, "data", input["data"][i])
         assert os.path.isfile(file), "{} does not exist".format(file)
 
-    if input["basic"]["augmentation_config_path"]:
-        file = os.path.join(exp_root_path, "conf", input["basic"]["augmentation_config_path"])
+    if input["basic"]["augmentation_config_name"]:
+        file = os.path.join(exp_root_path, "conf", input["basic"]["augmentation_config_name"])
         assert os.path.isfile(file), "{} does not exist".format(file)
 
