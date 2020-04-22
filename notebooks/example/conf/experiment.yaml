@@ -49,7 +49,7 @@ optimizer:
     - conv_bn_mask1
     - conv_bn_mask0
   excluded_layer_keywords: 
-  specific_lr_dict: {deepseech_bottleneck: 7e-5}
+  specific_lr_dict: {deepspeech_bottleneck: 7e-5}
     
   
 # multi-scheduler options have not been impletemented yet.
