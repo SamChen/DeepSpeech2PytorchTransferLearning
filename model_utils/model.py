@@ -441,37 +441,37 @@ class DeepSpeech2Model(object):
         results = [result[0][1] for result in beam_search_results]
         return results
 
-    def _adapt_feeding_dict(self, feeding_dict):
-        """Adapt feeding dict according to network struct.
+    # def _adapt_feeding_dict(self, feeding_dict):
+    #     """Adapt feeding dict according to network struct.
 
-        To remove impacts from padding part, we add scale_sub_region layer and
-        sub_seq layer. For sub_seq layer, 'sequence_offset' and
-        'sequence_length' fields are appended. For each scale_sub_region layer
-        'convN_index_range' field is appended.
+    #     To remove impacts from padding part, we add scale_sub_region layer and
+    #     sub_seq layer. For sub_seq layer, 'sequence_offset' and
+    #     'sequence_length' fields are appended. For each scale_sub_region layer
+    #     'convN_index_range' field is appended.
 
-        :param feeding_dict: Feeding is a map of field name and tuple index
-                             of the data that reader returns.
-        :type feeding_dict: dict|list
-        :return: Adapted feeding dict.
-        :rtype: dict|list
-        """
-        adapted_feeding_dict = copy.deepcopy(feeding_dict)
-        if isinstance(feeding_dict, dict):
-            adapted_feeding_dict["sequence_offset"] = len(adapted_feeding_dict)
-            adapted_feeding_dict["sequence_length"] = len(adapted_feeding_dict)
-            for i in xrange(self._num_conv_layers):
-                adapted_feeding_dict["conv%d_index_range" %i] = \
-                        len(adapted_feeding_dict)
-        elif isinstance(feeding_dict, list):
-            adapted_feeding_dict.append("sequence_offset")
-            adapted_feeding_dict.append("sequence_length")
-            for i in range(self._num_conv_layers):
-                adapted_feeding_dict.append("conv%d_index_range" % i)
-        else:
-            raise ValueError("Type of feeding_dict is %s, not supported." %
-                             type(feeding_dict))
+    #     :param feeding_dict: Feeding is a map of field name and tuple index
+    #                          of the data that reader returns.
+    #     :type feeding_dict: dict|list
+    #     :return: Adapted feeding dict.
+    #     :rtype: dict|list
+    #     """
+    #     adapted_feeding_dict = copy.deepcopy(feeding_dict)
+    #     if isinstance(feeding_dict, dict):
+    #         adapted_feeding_dict["sequence_offset"] = len(adapted_feeding_dict)
+    #         adapted_feeding_dict["sequence_length"] = len(adapted_feeding_dict)
+    #         for i in xrange(self._num_conv_layers):
+    #             adapted_feeding_dict["conv%d_index_range" %i] = \
+    #                     len(adapted_feeding_dict)
+    #     elif isinstance(feeding_dict, list):
+    #         adapted_feeding_dict.append("sequence_offset")
+    #         adapted_feeding_dict.append("sequence_length")
+    #         for i in range(self._num_conv_layers):
+    #             adapted_feeding_dict.append("conv%d_index_range" % i)
+    #     else:
+    #         raise ValueError("Type of feeding_dict is %s, not supported." %
+    #                          type(feeding_dict))
 
-        return adapted_feeding_dict
+    #     return adapted_feeding_dict
 
     def _adapt_data(self, batch):
         """Adapt data according to network struct.
