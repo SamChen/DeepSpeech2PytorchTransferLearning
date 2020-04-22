@@ -19,7 +19,7 @@ basic:
 train:
   num_total_epochs: 40
   num_iterations_validate: 200
-  num_sorta_epoch: 3
+  num_sorted_epoch: 3
   num_workers: 10
   batch_size: 16
   max_duration: 20

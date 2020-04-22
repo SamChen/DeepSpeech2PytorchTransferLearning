@@ -97,7 +97,7 @@ class DeepSpeech2Model(object):
               writer,
               num_iterations_print=100,
               feeding_dict=None,
-              sorta_epoch=0,
+              sortN_epoch=0,
               num_workers=10,
               specific_lr_dict = None
               ):
@@ -196,7 +196,7 @@ class DeepSpeech2Model(object):
         global_iter = 0
         last_lr = learning_rate
         for epoch in range(num_passes):
-            shuffle = True if epoch >= sorta_epoch else False
+            shuffle = True if epoch >= sortN_epoch else False
             train_dataloader = DataLoader(train_dataset, batch_size=train_batchsize,
                                           shuffle=shuffle, num_workers=num_workers,
                                           collate_fn=collate_fn)

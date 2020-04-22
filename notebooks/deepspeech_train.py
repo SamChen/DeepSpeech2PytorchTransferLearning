@@ -41,7 +41,7 @@ def main(config):
     segmented=config["train"]["segmented"]
     num_passes=config["train"]["num_total_epochs"]
     num_iterations_print=config["train"]["num_iterations_validate"]
-    sorta_epoch=config["train"]["num_sorta_epoch"]
+    sortN_epoch=config["train"]["num_sorted_epoch"]
     num_workers=config["train"]["num_workers"]
 
     
@@ -139,7 +139,7 @@ def main(config):
         num_iterations_print=num_iterations_print,
         writer=tensorboard_writer,
         output_dir=output_dir,
-        sorta_epoch=sorta_epoch,
+        sortN_epoch=sortN_epoch,
         num_workers=num_workers,
         specific_lr_dict=specific_lr_dict)
 
