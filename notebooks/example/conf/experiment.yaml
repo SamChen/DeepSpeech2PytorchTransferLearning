@@ -42,14 +42,16 @@ data:
 optimizer:
   learning_rate: 7e-6
   included_layer_keywords:
-      - deepspeech_bottleneck
-      - bigru2
-      - bigru1
-      - bigru0
-      - conv_bn_mask1
-      - conv_bn_mask0
-  excluded_layer_keywords:
-
+    - deepspeech_bottleneck
+    - bigru2
+    - bigru1
+    - bigru0
+    - conv_bn_mask1
+    - conv_bn_mask0
+  excluded_layer_keywords: 
+  specific_lr_dict: {deepseech_bottleneck: 7e-5}
+    
+  
 # multi-scheduler options have not been impletemented yet.
 scheduler:
   scheduler_name:

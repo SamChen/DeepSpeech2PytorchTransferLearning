@@ -43,6 +43,7 @@ def main(config):
     num_iterations_print=config["train"]["num_iterations_validate"]
     sorta_epoch=config["train"]["num_sorta_epoch"]
     num_workers=config["train"]["num_workers"]
+
     
     print(num_workers)
     
@@ -62,6 +63,12 @@ def main(config):
     lr=config["optimizer"]["learning_rate"]
     included_lr_key=config["optimizer"]["included_layer_keywords"]
     excluded_lr_key=config["optimizer"]["excluded_layer_keywords"]
+
+    try:
+        specific_lr_dict = config["optimizer"]["specific_lr_dict"]
+    except:
+        specific_lr_dict = None
+        Warning("You miss the keyword specific_lr_dict")
 
     scheduler_gamma=config["scheduler"]["gamma"]
 
@@ -133,7 +140,8 @@ def main(config):
         writer=tensorboard_writer,
         output_dir=output_dir,
         sorta_epoch=sorta_epoch,
-        num_workers=num_workers)
+        num_workers=num_workers,
+        specific_lr_dict=specific_lr_dict)
 
 
 if __name__ == "__main__":

@@ -13,6 +13,7 @@ import inspect
 import numpy as np
 from distutils.dir_util import mkpath
 from collections import defaultdict
+from itertools import compress
 import pandas as pd
 from torch.utils.data import DataLoader
 
@@ -97,7 +98,8 @@ class DeepSpeech2Model(object):
               num_iterations_print=100,
               feeding_dict=None,
               sorta_epoch=0,
-              num_workers=10
+              num_workers=10,
+              specific_lr_dict = None
               ):
         """Train the model for one epoch
 
@@ -154,8 +156,30 @@ class DeepSpeech2Model(object):
                             if any(nd not in n for nd in exclue_lr_key)}
 
         #TODO: implement a flexible optimizer that can custom learning rate for each layer.
+        if specific_lr_dict:
+            assert isinstance(specific_lr_dict, dict)
+
+            special_param = []
+            # special_param_name = []
+            common_param = [{"params":tuned_param[n]} for n in tuned_param \
+                            if any(nd not in n for nd in specific_lr_dict)]
+            # common_param_name = [n for n in tuned_param \
+            #                 if any(nd not in n for nd in specific_lr)]
+
+            
+            for n in tuned_param:
+                key_loc = [nd in n for nd in specific_lr_dict]
+                if any(key_loc):
+                    # sooooo ugly!!!
+                    special_param.append({"params":tuned_param[n], "lr": list(compress(specific_lr_dict.values(), key_loc))[0]})
+                    # special_param_name.append(n)
+
+            optim_param = common_param + special_param
+        else:
+            optim_param = [{"params":tuned_param[n]} for n in tuned_param]
+
         self.logger.info("learnable parameter name: {}\n".format(tuned_param.keys()))
-        optimizer = optim.AdamW(tuned_param.values(), lr=learning_rate)
+        optimizer = optim.AdamW(optim_param, lr=learning_rate)
         # optimizer = optim.Adam(tuned_param.values(), lr=learning_rate,
         #                         betas=(0.9, 0.98), eps=1e-9)
 
