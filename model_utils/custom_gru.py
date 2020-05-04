@@ -9,84 +9,6 @@ from torch import Tensor
 from torch.nn.utils.rnn import PackedSequence
 import numbers
 
-'''
-Some helper classes for writing custom TorchScript LSTMs.
-
-Goals:
-- Classes are easy to read, use, and extend
-- Performance of custom LSTMs approach fused-kernel-levels of speed.
-
-A few notes about features we could add to clean up the below code:
-- Support enumerate with nn.ModuleList:
-  https://github.com/pytorch/pytorch/issues/14471
-- Support enumerate/zip with lists:
-  https://github.com/pytorch/pytorch/issues/15952
-- Support overriding of class methods:
-  https://github.com/pytorch/pytorch/issues/10733
-- Support passing around user-defined namedtuple types for readability
-- Support slicing w/ range. It enables reversing lists easily.
-  https://github.com/pytorch/pytorch/issues/10774
-- Multiline type annotations. List[List[Tuple[Tensor,Tensor]]] is verbose
-  https://github.com/pytorch/pytorch/pull/14922
-'''
-
-
-def script_lstm(input_size, hidden_size, num_layers, bias=True,
-                batch_first=False, dropout=False, bidirectional=False):
-    '''Returns a ScriptModule that mimics a PyTorch native LSTM.'''
-
-    # The following are not implemented.
-    assert bias
-    assert not batch_first
-
-    if bidirectional:
-        stack_type = StackedRNN2
-        layer_type = BidirRNNLayer
-        dirs = 2
-    elif dropout:
-        stack_type = StackedLSTMWithDropout
-        layer_type = LSTMLayer
-        dirs = 1
-    else:
-        stack_type = StackedLSTM
-        layer_type = LSTMLayer
-        dirs = 1
-
-    return stack_type(num_layers, layer_type,
-                      first_layer_args=[LSTMCell, input_size, hidden_size],
-                      other_layer_args=[LSTMCell, hidden_size * dirs,
-                                        hidden_size])
-
-
-def script_lnlstm(input_size, hidden_size, num_layers, bias=True,
-                  batch_first=False, dropout=False, bidirectional=False,
-                  decompose_layernorm=False):
-    '''Returns a ScriptModule that mimics a PyTorch native LSTM.'''
-
-    # The following are not implemented.
-    assert bias
-    assert not batch_first
-    assert not dropout
-
-    if bidirectional:
-        stack_type = StackedLSTM2
-        layer_type = BidirLSTMLayer
-        dirs = 2
-    else:
-        stack_type = StackedLSTM
-        layer_type = LSTMLayer
-        dirs = 1
-
-    return stack_type(num_layers, layer_type,
-                      first_layer_args=[LayerNormLSTMCell, input_size, hidden_size,
-                                        decompose_layernorm],
-                      other_layer_args=[LayerNormLSTMCell, hidden_size * dirs,
-                                        hidden_size, decompose_layernorm])
-
-
-LSTMState = namedtuple('LSTMState', ['hx', 'cx'])
-
-
 def reverse(lst:List[Tensor])-> List[Tensor]:
     return lst[::-1]
 
@@ -148,8 +70,9 @@ class GRUCell(nn.Module):
 class GRU_hiddenCell(nn.Module):
     '''
     This GRU layer leave the input * hidden_i outside.
-    This mimics PaddlePaddle's dynamicGRU. Only difference is my implementation based on Cell
+    This mimics PaddlePaddle's dynamicGRU. Only difference is my implementation based on GRUCell instead of a complete GRU layer
     '''
+
     def __init__(self, hidden_size, gate_act="sigmoid", state_act="tanh"):
         super(GRU_hiddenCell, self).__init__()
         self.hidden_size = hidden_size
@@ -178,7 +101,6 @@ class GRU_hiddenCell(nn.Module):
         gates_input = input + self.bias
         u,r,c = gates_input.chunk(3, 1)
         u_h,r_h,c_h = self.weight_h.chunk(3,1)
-
 
         u += torch.mm(hx, u_h)
         r += torch.mm(hx, r_h)
@@ -371,56 +293,56 @@ def init_stacked_rnn(num_layers, layer, first_layer_args, other_layer_args):
     return nn.ModuleList(layers)
 
 
-class StackedRNN(jit.ScriptModule):
-    __constants__ = ['layers']  # Necessary for iterating through self.layers
-
-    def __init__(self, num_layers, layer, first_layer_args, other_layer_args):
-        super(StackedRNN, self).__init__()
-        self.layers = init_stacked_rnn(num_layers, layer, first_layer_args,
-                                        other_layer_args)
-
-    @jit.script_method
-    def forward(self, input, states):
-        # type: (Tensor, List[Tensor]) -> Tuple[Tensor, List[Tensor]]
-        # List[RNNState]: One state per layer
-        output_states = jit.annotate(List[Tensor], [])
-        output = input
-        # XXX: enumerate https://github.com/pytorch/pytorch/issues/14471
-        i = 0
-        for rnn_layer in self.layers:
-            state = states[i]
-            output, out_state = rnn_layer(output, state)
-            output_states += [out_state]
-            i += 1
-        return output, output_states
-
-
-# Differs from StackedLSTM in that its forward method takes
-# List[List[Tuple[Tensor,Tensor]]]. It would be nice to subclass StackedLSTM
-# except we don't support overriding script methods.
-# https://github.com/pytorch/pytorch/issues/10733
-class StackedRNN2(jit.ScriptModule):
-    __constants__ = ['layers']  # Necessary for iterating through self.layers
-
-    def __init__(self, num_layers, layer, first_layer_args, other_layer_args):
-        super(StackedRNN2, self).__init__()
-        self.layers = init_stacked_rnn(num_layers, layer, first_layer_args,
-                                        other_layer_args)
-
-    @jit.script_method
-    def forward(self, input, states):
-        # type: (Tensor, List[List[Tensor]]) -> Tuple[Tensor, List[List[Tensor]]]
-        # List[List[LSTMState]]: The outer list is for layers,
-        #                        inner list is for directions.
-        output_states = jit.annotate(List[List[Tensor]], [])
-        output = input
-        # XXX: enumerate https://github.com/pytorch/pytorch/issues/14471
-        i = 0
-        for rnn_layer in self.layers:
-            state = states[i]
-            output, out_state = rnn_layer(output, state)
-            output_states += [out_state]
-            i += 1
-        return output, output_states
+# class StackedRNN(jit.ScriptModule):
+#     __constants__ = ['layers']  # Necessary for iterating through self.layers
+# 
+#     def __init__(self, num_layers, layer, first_layer_args, other_layer_args):
+#         super(StackedRNN, self).__init__()
+#         self.layers = init_stacked_rnn(num_layers, layer, first_layer_args,
+#                                         other_layer_args)
+# 
+#     @jit.script_method
+#     def forward(self, input, states):
+#         # type: (Tensor, List[Tensor]) -> Tuple[Tensor, List[Tensor]]
+#         # List[RNNState]: One state per layer
+#         output_states = jit.annotate(List[Tensor], [])
+#         output = input
+#         # XXX: enumerate https://github.com/pytorch/pytorch/issues/14471
+#         i = 0
+#         for rnn_layer in self.layers:
+#             state = states[i]
+#             output, out_state = rnn_layer(output, state)
+#             output_states += [out_state]
+#             i += 1
+#         return output, output_states
+# 
+# 
+# # Differs from StackedLSTM in that its forward method takes
+# # List[List[Tuple[Tensor,Tensor]]]. It would be nice to subclass StackedLSTM
+# # except we don't support overriding script methods.
+# # https://github.com/pytorch/pytorch/issues/10733
+# class StackedRNN2(jit.ScriptModule):
+#     __constants__ = ['layers']  # Necessary for iterating through self.layers
+# 
+#     def __init__(self, num_layers, layer, first_layer_args, other_layer_args):
+#         super(StackedRNN2, self).__init__()
+#         self.layers = init_stacked_rnn(num_layers, layer, first_layer_args,
+#                                         other_layer_args)
+# 
+#     @jit.script_method
+#     def forward(self, input, states):
+#         # type: (Tensor, List[List[Tensor]]) -> Tuple[Tensor, List[List[Tensor]]]
+#         # List[List[LSTMState]]: The outer list is for layers,
+#         #                        inner list is for directions.
+#         output_states = jit.annotate(List[List[Tensor]], [])
+#         output = input
+#         # XXX: enumerate https://github.com/pytorch/pytorch/issues/14471
+#         i = 0
+#         for rnn_layer in self.layers:
+#             state = states[i]
+#             output, out_state = rnn_layer(output, state)
+#             output_states += [out_state]
+#             i += 1
+#         return output, output_states
 
 
