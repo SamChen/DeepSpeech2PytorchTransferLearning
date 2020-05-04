@@ -2,12 +2,13 @@ import torch
 import torch.nn as nn
 from torch.nn import Parameter
 import torch.jit as jit
+from torch import Tensor
+from torch.nn.utils.rnn import PackedSequence
+
+import numbers
 import warnings
 from collections import namedtuple, defaultdict
 from typing import List, Tuple
-from torch import Tensor
-from torch.nn.utils.rnn import PackedSequence
-import numbers
 
 def reverse(lst:List[Tensor])-> List[Tensor]:
     return lst[::-1]
