@@ -1,2 +1,0 @@
-_swig_decoders
-swig_decoders
