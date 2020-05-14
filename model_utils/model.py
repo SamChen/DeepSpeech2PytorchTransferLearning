@@ -186,7 +186,6 @@ class DeepSpeech2Model(object):
         scheduler = optim.lr_scheduler.ExponentialLR(optimizer,
                                                      gamma=scheduler_gamma,
                                                      last_epoch=-1)
-        torch.nn.utils.clip_grad_norm_(tuned_param.values(), max_norm=gradient_clipping)
 
         val_dataloader = DataLoader(val_dataset, batch_size=val_batchsize,
                                     shuffle=False, num_workers=num_workers,
@@ -212,6 +211,7 @@ class DeepSpeech2Model(object):
                     break
 
                 loss.backward()
+                torch.nn.utils.clip_grad_norm_(tuned_param.values(), max_norm=gradient_clipping)
                 optimizer.step()
 
                 self.logger.debug("epoch{}, global_iter{} train loss: {}".format(epoch, global_iter, loss.item()))
