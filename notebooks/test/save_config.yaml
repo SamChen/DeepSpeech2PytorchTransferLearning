@@ -1,8 +1,0 @@
-basic: {augmentation_config_path: null, batch_size: 16, exp_root_path: ./iconect/models/pt_only_all_utt_wgt_transfer_mean,
-  num_epochs_train: 40, num_iterations_validate: '200,', num_sorta_epoch: 0, pretrained_model_path: None}
-data: {test_csv: test_short.csv, train_csv: train_short.csv, val_csv: val_short.csv}
-optimizer:
-  excluded_layer_keywords: None
-  included_layer_keywords: [deeplearning]
-  learning_rate: 7e-06
-scheduler: {gamma: 1.0, scheduler_name: null}
