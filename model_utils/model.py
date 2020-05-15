@@ -38,14 +38,6 @@ logging.basicConfig(
     format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)d] %(message)s')
 
 
-# def flatten_paded_seq(text, length):
-#     assert isinstance(text, torch.IntTensor), "{}".format(text.type())
-#     assert isinstance(length, torch.IntTensor), "{}".format(length.type())
-#
-#     flattened_text = torch.cat([text[i][:length[i]] for i in range(text.shape[0])])
-#     return flattened_text
-
-
 class DeepSpeech2Model(object):
     """DeepSpeech2Model class.
 
@@ -143,7 +135,7 @@ class DeepSpeech2Model(object):
         # adapted_dev_batch_reader = self._adapt_data(dev_batch_reader)
 
         # create loss
-        # PaddlePaddle DeepSpeech use puts the blank at the end
+        # PaddlePaddle DeepSpeech2 use puts the blank at the end
         self.criterion = CTCLoss(blank=self.vocab_size, reduction="mean", zero_infinity=True)
 
         # optimizer
@@ -296,18 +288,12 @@ class DeepSpeech2Model(object):
                               input_lengths=length_hyps,
                               target_lengths=length_refs)
 
-        # following espnet's solution. Use "sum" as reduction strategy, and average over batch dim before backward.
-        # loss = loss / batch["length_text"].size(0)
-            # if loss is NaN
         if loss != loss:
             self.logger.debug("uttid: {}".format(batch["uttid"]))
             self.logger.debug("length_hyps: {}, length_refs: {}".format(length_hyps, length_refs))
             self.logger.debug("hyps: {}".format(hyps))
             self.logger.debug("other: {}".format(other))
         return loss
-
-    #TODO val and train WER
-
 
 
     @staticmethod
@@ -441,37 +427,6 @@ class DeepSpeech2Model(object):
         results = [result[0][1] for result in beam_search_results]
         return results
 
-    # def _adapt_feeding_dict(self, feeding_dict):
-    #     """Adapt feeding dict according to network struct.
-
-    #     To remove impacts from padding part, we add scale_sub_region layer and
-    #     sub_seq layer. For sub_seq layer, 'sequence_offset' and
-    #     'sequence_length' fields are appended. For each scale_sub_region layer
-    #     'convN_index_range' field is appended.
-
-    #     :param feeding_dict: Feeding is a map of field name and tuple index
-    #                          of the data that reader returns.
-    #     :type feeding_dict: dict|list
-    #     :return: Adapted feeding dict.
-    #     :rtype: dict|list
-    #     """
-    #     adapted_feeding_dict = copy.deepcopy(feeding_dict)
-    #     if isinstance(feeding_dict, dict):
-    #         adapted_feeding_dict["sequence_offset"] = len(adapted_feeding_dict)
-    #         adapted_feeding_dict["sequence_length"] = len(adapted_feeding_dict)
-    #         for i in xrange(self._num_conv_layers):
-    #             adapted_feeding_dict["conv%d_index_range" %i] = \
-    #                     len(adapted_feeding_dict)
-    #     elif isinstance(feeding_dict, list):
-    #         adapted_feeding_dict.append("sequence_offset")
-    #         adapted_feeding_dict.append("sequence_length")
-    #         for i in range(self._num_conv_layers):
-    #             adapted_feeding_dict.append("conv%d_index_range" % i)
-    #     else:
-    #         raise ValueError("Type of feeding_dict is %s, not supported." %
-    #                          type(feeding_dict))
-
-    #     return adapted_feeding_dict
 
     def _adapt_data(self, batch):
         """Adapt data according to network struct.

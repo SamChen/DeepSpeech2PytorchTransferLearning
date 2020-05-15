@@ -1,6 +1,6 @@
 # DeepSpeech2 on Pytorch 
 
-* This repo implement a pytorch-based DeepSpeech2 that can load the DeepSpeech2 model which is pretrained on PaddlePaddle. Create this repo is for transfer-learning related experiment. 
+* This repo implement a pytorch-based DeepSpeech2 that can load the DeepSpeech2 model which is pretrained on PaddlePaddle-v0.12. 
 
 ## Table of Contents
 - [DeepSpeech2 on Pytorch](#deepspeech2-on-pytorch)
@@ -12,8 +12,8 @@
     - [Structure](#structure)
     - [Manifest for data](#manifest-for-data)
     - [Configuration](#configuration)
-      - [Experiment setting](#experiment-setting)
       - [Data Augmentation](#data-augmentation)
+      - [Experiment setting](#experiment-setting)
   - [Example](#example)
     - [Creating Example](#creating-example)
     - [Download DS2 model and Language Model](#download-ds2-model-and-language-model)
@@ -34,22 +34,21 @@
 
 ### Prerequisites
 tested on Python 3.7 with pytorch 1.4: 
-- Ubuntu19.10 (GPU and CPU)
-- MacOS10.15 (CPU only)
+  - Ubuntu19.10 (GPU and CPU)
+  - MacOS10.15 (CPU only)
 
 ### Setup
-- Make sure these libraries or tools installed: `pkg-config`, `flac`, `ogg`, `vorbis`, `boost` and `swig`, e.g. installing them via `apt-get`:
+1. Make sure these libraries or tools installed: `pkg-config`, `flac`, `ogg`, `vorbis`, `boost` and `swig`, e.g. installing them via `apt-get`:
 
 ```bash
 sudo apt-get install -y pkg-config libflac-dev libogg-dev libvorbis-dev libboost-dev swig python-dev
 ```
-
 or, installing them via `homebrew` or `linuxbrew`:
 ```bash
 brew install flac libogg libvorbis boost pkg-config eigen
 ```
 
-- Run `setup.sh` to install all python packages and compile a C-based decoder. 
+2. Run `setup.sh` to install all python packages and compile a C-based decoder. 
 
 ## Getting Started
 ### Structure 
@@ -89,9 +88,6 @@ Our pytorch version takes a `.csv` file as its data set interface. This csv file
 ### Configuration
 Currently include two configurations. One for data augmentation and the other is for training process.
 
-#### Experiment setting
-`experiment.yaml` stores all configurations for training a model including the data augmentation which is introduced in the next section. Please check `notebooks/example/conf/experiment.yaml` for more details.
-
 #### Data Augmentation 
 We kept the original code for data augmentation and feature extraction. Six optional augmentation components are provided to be selected, configured and inserted into the processing pipeline.
 
@@ -125,6 +121,9 @@ For other configuration examples, please refer to `notebooks/example/conf/augmen
 
 Be careful when utilizing the data augmentation technique, as improper augmentation will do harm to the training, due to the enlarged train-test gap.
 
+#### Experiment setting
+`experiment.yaml` stores all configurations for training a model including the data augmentation which is introduced in the next section. Please check `notebooks/example/conf/experiment.yaml` for more details.
+
 ## Example
 ### Creating Example
 Several audio recordings from Voxforge are stored in `notebooks/example/audio`. Since the manifest requirements absolution path for each recording. The user has to run `generate_manifest.py` to generate example manifest. In this example, `train set`, `val set` and `test set` are pointed to the `example.csv`. 
@@ -137,7 +136,7 @@ python generate_manifest.py
 Download DeepSpeech model and Language Model from the following [link](https://ohsu.app.box.com/folder/110543895998). This should take a while as the language model is huge. In the meantime, change `ds2_model_path`, `language_model_path`, `vocab_filepath` and `mean_std_filepath` accordingly. 
 
 ### Training a model
-<font color=red> Training on CPU is runnable, but it is super slow.</font>Run following code for training:
+<font color=red> Training on CPU is runnable, but it is super slow.</font> Run following code for training:
 ```
 cd notebooks
 python deepspeech_train.py example/conf/experiment.yaml
