@@ -49,6 +49,8 @@ optimizer:
     - conv_bn_mask1
     - conv_bn_mask0
   excluded_layer_keywords: 
+  # Here, you can specify learning rate for each layer. 
+  # This will overwrite the previous learning rate on that the specified layer.
   specific_lr_dict: {deepspeech_bottleneck: 7e-5}
     
   
