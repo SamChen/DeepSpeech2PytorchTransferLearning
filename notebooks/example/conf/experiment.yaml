@@ -1,14 +1,14 @@
 basic:
   # Please change these absolut paths for your computer
-  ds2_model_path: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/params/"
-  language_model_path: "/Users/chliu/github/deepspeech_extra/models/lm/common_crawl_00.prune01111.trie.klm"
-  vocab_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/vocab.txt"
-  mean_std_filepath: "/Users/chliu/github/deepspeech_extra/models/baidu_en8k/mean_std.npz"
+  ds2_model_path: "abspath/to/deepspeech/model/baidu_en8k/params/"
+  language_model_path: "abspath/to/deepspeech/model/lm/common_crawl_00.prune01111.trie.klm"
+  vocab_filepath: "abspath/to/deepspeech/model/baidu_en8k/vocab.txt"
+  mean_std_filepath: "abspath/to/deepspeech/model/baidu_en8k/mean_std.npz"
 
-  exp_root_path: "/Users/chliu/github/deepspeech/notebooks/example/"
-  # model: "network.deepspeech_orig"
+  exp_root_path: "abspath/to/deepspeech/notebooks/example/"
   model: "network.deepspeech_orig"
   # default load the deepspeech2 model from paddlepaddle
+
   # this is for load pytorch pretrained model
   pt_model_path:
   use_pt_model: False
@@ -56,6 +56,3 @@ optimizer:
 scheduler:
   scheduler_name:
   gamma: 1.0
-
-
-
