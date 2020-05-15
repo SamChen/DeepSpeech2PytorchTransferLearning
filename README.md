@@ -179,13 +179,13 @@ Currently, we only adapted the BaiduEN8k Model.
 
 | Language |                                       Model Name                                        |         Training Data          | Hours of Speech |
 | :------: | :-------------------------------------------------------------------------------------: | :----------------------------: | --------------: |
-| English  | [BaiduEN8k Model](https://deepspeech.bj.bcebos.com/demo_models/baidu_en8k_model.tar.gz) | Baidu Internal English Dataset |          8628 h |
+| English  | [BaiduEN8k Model](https://github.com/SamChen/DeepSpeech2PytorchTransferLearning/releases/download/v0.0.1/baidu_en8k_model.tar.gz) | Baidu Internal English Dataset |          8628 h |
 
 ### Language Model Released
 
 |                                      Language Model                                      |                                                     Training Data                                                      | Token-based |   Size | Descriptions                                                                                         |
 | :--------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------: | :---------: | -----: | :--------------------------------------------------------------------------------------------------- |
-| [English LM](https://deepspeech.bj.bcebos.com/en_lm/common_crawl_00.prune01111.trie.klm) | [CommonCrawl(en.00)](http://web-language-models.s3-website-us-east-1.amazonaws.com/ngrams/en/deduped/en.00.deduped.xz) | Word-based  | 8.3 GB | Pruned with 0 1 1 1 1; <br/> About 1.85 billion n-grams; <br/> 'trie'  binary with '-a 22 -q 8 -b 8' |
+| [English LM](https://github.com/SamChen/DeepSpeech2PytorchTransferLearning/releases) | [CommonCrawl(en.00)](http://web-language-models.s3-website-us-east-1.amazonaws.com/ngrams/en/deduped/en.00.deduped.xz) | Word-based  | 8.3 GB | Pruned with 0 1 1 1 1; <br/> About 1.85 billion n-grams; <br/> 'trie'  binary with '-a 22 -q 8 -b 8' |
 
 ## Future Work
 ### Compute Mean & Stddev for Normalizer
